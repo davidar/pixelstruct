@@ -1,0 +1,33 @@
+ABOUT
+PixelStruct is an opensource tool for visualizing 3D scenes reconstructed from
+photographs. It uses the opensource structure-from-motion system Bundler, which
+is based on the same research as Microsoft Live Labs Photosynth.
+
+HOW TO COMPILE
+PixelStruct requires the following libraries:
+ - Qt4
+ - OpenGL
+ 
+Once you have installed these, compile the program with:
+  mkdir build/ && cd build/ && cmake .. && make && cd ..
+
+This will create a binary called 'pixelstruct' in build/src/, which you can
+either copy into your PATH, or run directly with:
+  ./build/src/pixelstruct
+
+USAGE
+PixelStruct requires Bundler, which can be downloaded from
+<http://phototour.cs.washington.edu/bundler/>. First, you need to manually run
+Bundler on a directory of images as described at either
+<http://phototour.cs.washington.edu/bundler/bundler-v0.2-manual.html> or the
+README.txt file contained in the Bundler distribution.
+
+Once Bundler has completed processing the images, the image set can be loaded
+into PixelStruct. Launch PixelStruct as described above, and go to "File>Open
+image directory". Navigate into the image directory you ran Bundler on, and hit
+"Choose". The 3D point cloud will be loaded into the window, and once the viewer
+has focus (you may have to click on it for this), the camera will focus on the
+first image. You can now hit your Return key to move to the next image, or use
+your arrow keys to move to another image in the chosen direction. Pressing Page
+Up and Page Down will attempt to move the camera closer to and further away from
+the photographed object.
