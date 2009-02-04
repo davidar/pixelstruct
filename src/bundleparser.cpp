@@ -105,6 +105,7 @@ void BundleParser::parse(const char* file) {
 			float px, py;
 			fin >> camera >> key >> px >> py;
 			// TODO store this information somewhere
+			m_cameras[camera].add_visible_point(i);
 		}
 		
 		VisiblePoint point(Point(pos_x, pos_y, pos_z), QColor(col_r, col_g, col_b));

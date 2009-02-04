@@ -72,14 +72,27 @@ void GLWidget::paintImagePlane(GLImage image) {
 		glMultMatrixd(c.matrix_l2w());
 		
 		glColor4f(1.0,1.0,1.0,image.opacity);
-		double maxx = 0.5*image.width, maxy = 0.5*image.height;
+		double maxx = 0.5*image.width/c.focal_length(), maxy = 0.5*image.height/c.focal_length();
 		
 		glBegin(GL_QUADS);
-			glTexCoord2d(0.0,0.0); glVertex3d(-maxx/c.focal_length(),-maxy/c.focal_length(),-1.0);
-			glTexCoord2d(1.0,0.0); glVertex3d(+maxx/c.focal_length(),-maxy/c.focal_length(),-1.0);
-			glTexCoord2d(1.0,1.0); glVertex3d(+maxx/c.focal_length(),+maxy/c.focal_length(),-1.0);
-			glTexCoord2d(0.0,1.0); glVertex3d(-maxx/c.focal_length(),+maxy/c.focal_length(),-1.0);
+			glTexCoord2d(0.0,0.0); glVertex3d(-maxx,-maxy,-1.0);
+			glTexCoord2d(1.0,0.0); glVertex3d(+maxx,-maxy,-1.0);
+			glTexCoord2d(1.0,1.0); glVertex3d(+maxx,+maxy,-1.0);
+			glTexCoord2d(0.0,1.0); glVertex3d(-maxx,+maxy,-1.0);
 		glEnd();
+		
+		// TODO common plane transitions (need to fix deformed textures and clipping of quads):
+		// Plane local_plane = m_common_plane.transform(c.matrix_w2l()); // transform common plane to local coords
+		// double d0 = local_plane.distance(Point(-maxx,-maxy,-1.0));
+		// double d1 = local_plane.distance(Point(+maxx,-maxy,-1.0));
+		// double d2 = local_plane.distance(Point(+maxx,+maxy,-1.0));
+		// double d3 = local_plane.distance(Point(-maxx,+maxy,-1.0));
+		// glBegin(GL_QUADS);
+		// 	glTexCoord2d(0.0,0.0); glVertex3d(d0*-maxx,d0*-maxy,-d0);
+		// 	glTexCoord2d(1.0,0.0); glVertex3d(d1*+maxx,d1*-maxy,-d1);
+		// 	glTexCoord2d(1.0,1.0); glVertex3d(d2*+maxx,d2*+maxy,-d2);
+		// 	glTexCoord2d(0.0,1.0); glVertex3d(d3*-maxx,d3*+maxy,-d3);
+		// glEnd();
 		
 		glDisable(GL_BLEND); glEnable(GL_DEPTH_TEST);
 		glDisable(GL_TEXTURE_2D);
@@ -147,6 +160,8 @@ void GLWidget::gotoCamera(int target_camera) {
 	
 	const Camera& c1 = m_cur_image.camera < 0 ? Camera::Identity : m_parser->cameras()[m_cur_image.camera];
 	const Camera& c2 = m_parser->cameras()[target_camera];
+	
+	// m_common_plane = CommonPlane(c1, c2, m_parser->points()); // TODO
 	
 	glDeleteTextures(1, &(m_prev_image.texture));
 	m_prev_image = m_cur_image;

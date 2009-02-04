@@ -55,3 +55,7 @@ Point Camera::point_transform(const Point p, const double* m) const {
 	
 	return Point(x, y, z);
 }
+
+void Camera::add_visible_point(int index) {
+	m_visible_points.insert(index);
+}

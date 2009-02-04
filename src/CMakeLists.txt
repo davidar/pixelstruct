@@ -1,6 +1,6 @@
 FIND_PACKAGE(Qt4 REQUIRED)
 FIND_PACKAGE(OpenGL REQUIRED)
-# FIND_PACKAGE(CGAL REQUIRED)
+FIND_PACKAGE(CGAL REQUIRED)
 SET(QT_USE_QTOPENGL ON)
 INCLUDE(${QT_USE_FILE})
 ADD_DEFINITIONS(${QT_DEFINITIONS} -Wall -O2)
@@ -8,7 +8,7 @@ ADD_DEFINITIONS(${QT_DEFINITIONS} -Wall -O2)
 INCLUDE_DIRECTORIES(
 	${CMAKE_CURRENT_BINARY_DIR}
 	${QT_INCLUDE_DIR}
-# 	${CGAL_INCLUDE_DIR}
+# 	${CGAL_INCLUDE_DIR} # including this directory causes conflicts with GMP headers
 )
 
 SET(SOURCES
@@ -20,6 +20,8 @@ SET(SOURCES
 	visiblepoint.cpp
 	mainwindow.cpp
 	imagelist.cpp
+	plane.cpp
+	commonplane.cpp
 )
 SET(HEADERS
 	glwidget.h
@@ -29,6 +31,8 @@ SET(HEADERS
 	visiblepoint.h
 	mainwindow.h
 	imagelist.h
+	plane.h
+	commonplane.h
 )
 
 QT4_AUTOMOC(${SOURCES})
@@ -41,5 +45,5 @@ TARGET_LINK_LIBRARIES(pixelstruct
 	${QT_QTOPENGL_LIBRARY}
 	${OPENGL_gl_LIBRARY}
 	${OPENGL_glu_LIBRARY}
-# 	${CGAL_LIBRARIES}
+	${CGAL_LIBRARIES}
 )
