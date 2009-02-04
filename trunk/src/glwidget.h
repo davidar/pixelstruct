@@ -20,6 +20,7 @@
 
 #include "bundleparser.h"
 #include "imagelist.h"
+#include "commonplane.h"
 
 struct GLImage {
 	int width, height;
@@ -60,6 +61,7 @@ class GLWidget : public QGLWidget {
 	ImageList* m_imagelist;
 	GLImage m_cur_image;
 	GLImage m_prev_image;
+	// CommonPlane m_common_plane; // TODO
 };
 
 #endif
