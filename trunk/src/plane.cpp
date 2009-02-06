@@ -39,3 +39,9 @@ double Plane::distance(const Point& p) {
 	/// the length of the line is equal to distance(p) times the distance between p and the origin
 	return m_d / (m_a*p.x() + m_b*p.y() + m_c*p.z());
 }
+
+double Plane::shortest_sqdist(const Point& p) {
+	/// square of shortest distance between this Plane and Point p
+	double n = m_a*p.x() + m_b*p.y() + m_c*p.z() - m_d;
+	return (n*n) / (m_a*m_a + m_b*m_b + m_c*m_c);
+}

@@ -18,7 +18,7 @@
 
 #include "point.h"
 
-#include <set>
+#include <vector>
 
 class Camera {
 	public:
@@ -38,7 +38,7 @@ class Camera {
 	Point pos() const    {return Point(m_matrix_l2w[12], m_matrix_l2w[13], m_matrix_l2w[14]);} // fourth column of m_matrix_l2w
 	Point point_w2l(const Point p) const {return point_transform(p, m_matrix_w2l);}
 	Point point_l2w(const Point p) const {return point_transform(p, m_matrix_l2w);}
-	const std::set<int>& visible_points() const {return m_visible_points;}
+	const std::vector<int>& visible_points() const {return m_visible_points;}
 	
 	static const Camera Identity;
 	
@@ -51,7 +51,7 @@ class Camera {
 	double m_k1, m_k2; // radial distortion coefficients
 	const double* m_matrix_w2l; // transformation matrix: world coords to local coords (for transforming the view)
 	double* m_matrix_l2w; // transformation matrix: local coords to world coords (for transforming objects)
-	std::set<int> m_visible_points;
+	std::vector<int> m_visible_points;
 };
 
 #endif
