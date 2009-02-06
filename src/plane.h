@@ -26,6 +26,12 @@ class Plane {
 	
 	Plane transform(const double*);
 	double distance(const Point&);
+	double shortest_sqdist(const Point&);
+	
+	double a() {return m_a;}
+	double b() {return m_b;}
+	double c() {return m_c;}
+	double d() {return m_d;}
 	
 	protected:
 	double m_a, m_b, m_c, m_d; // m_a*x + m_b*y + m_c*z = m_d

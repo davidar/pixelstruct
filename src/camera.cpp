@@ -57,5 +57,5 @@ Point Camera::point_transform(const Point p, const double* m) const {
 }
 
 void Camera::add_visible_point(int index) {
-	m_visible_points.insert(index);
+	m_visible_points.push_back(index);
 }
