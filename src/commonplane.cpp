@@ -26,13 +26,19 @@ CommonPlane::CommonPlane() {
 }
 
 CommonPlane::CommonPlane(const Camera& c1, const Camera& c2, const VisiblePoint* points) {
-	vector<CGAL_Point> cgal_points;
-	for(vector<int>::const_iterator i = c1.visible_points().begin(); i != c1.visible_points().end(); i++)
-		cgal_points.push_back(CGAL_Point(points[*i].x(), points[*i].y(), points[*i].z()));
-	for(vector<int>::const_iterator i = c2.visible_points().begin(); i != c2.visible_points().end(); i++)
-		cgal_points.push_back(CGAL_Point(points[*i].x(), points[*i].y(), points[*i].z()));
+	vector<int> intersection(c1.visible_points().size() + c2.visible_points().size());
+	vector<int>::const_iterator intersection_end =
+		set_intersection(c1.visible_points().begin(), c1.visible_points().end(),
+				 c2.visible_points().begin(), c2.visible_points().end(),
+				 intersection.begin());
 	
-	ransac(cgal_points);
+	int num_elements = intersection_end - intersection.begin();
+	if(num_elements > 0) {
+		vector<CGAL_Point> cgal_points;
+		for(vector<int>::const_iterator i = intersection.begin(); i != intersection_end; i++)
+			cgal_points.push_back(CGAL_Point(points[*i].x(), points[*i].y(), points[*i].z()));
+		ransac(cgal_points);
+	}
 }
 
 CommonPlane::CommonPlane(const vector<CGAL_Point>& cgal_points) {
@@ -54,8 +60,8 @@ void CommonPlane::ransac(const vector<CGAL_Point>& cgal_points) {
 	
 	const int num_points = cgal_points.size();
 	
-	const unsigned int MIN_POINTS = 5;
-	const int MAX_ITERATIONS = 1000;
+	const unsigned int MIN_POINTS = 3;
+	const int MAX_ITERATIONS = 5000;
 	const double ERROR_THRESHOLD = 0.1;
 	const unsigned int REQD_POINTS = 0.2*num_points;
 	
