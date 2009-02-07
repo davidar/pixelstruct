@@ -21,6 +21,7 @@
 #include <cstdio>
 #include <unistd.h>
 #include <cfloat>
+#include <cmath>
 
 #include <QDebug>
 #include <QKeyEvent>
@@ -81,7 +82,8 @@ void GLWidget::paintImagePlane(GLImage image) {
 		double d3 = local_plane.distance(Point(-maxx,+maxy,-1.0));
 		
 		// test if part or all of the image projected onto the common plane lies behind the camera
-		if(d0 <= 0.0 || d1 <= 0.0 || d2 <= 0.0 || d3 <= 0.0) {
+		if(d0 <= 0.0 || d1 <= 0.0 || d2 <= 0.0 || d3 <= 0.0 ||
+		   isnan(d0) || isnan(d1) || isnan(d2) || isnan(d3)) {
 			// simple image projection
 			glBegin(GL_QUADS);
 				glTexCoord2d(0.0,0.0); glVertex3d(-maxx,-maxy,-1.0);
@@ -111,8 +113,8 @@ void GLWidget::paintGL() {
 	
 	glCallList(m_pointcloud);
 	
-	paintImagePlane(m_cur_image);
 	paintImagePlane(m_prev_image);
+	paintImagePlane(m_cur_image);
 }
 
 void GLWidget::resizeGL (int width, int height) {
