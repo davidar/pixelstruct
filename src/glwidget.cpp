@@ -170,6 +170,9 @@ void GLWidget::gotoCamera(int target_camera) {
 	
 	m_common_plane = CommonPlane(c1, c2, m_parser->points());
 	
+	// Triangulation prev_triangulation(c1, m_parser->points()); // TODO
+	// Triangulation cur_triangulation(c2, m_parser->points()); // TODO
+	
 	glDeleteTextures(1, &(m_prev_image.texture));
 	m_prev_image = m_cur_image;
 	m_cur_image.camera = target_camera;

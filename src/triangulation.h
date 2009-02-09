@@ -13,36 +13,29 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef COMMONPLANE_H
-#define COMMONPLANE_H
-
-#include "plane.h"
+#ifndef TRIANGULATION_H
+#define TRIANGULATION_H
 
 #include "camera.h"
 #include "visiblepoint.h"
 
 #include <vector>
 
-#include <CGAL/Cartesian.h>
-#include <CGAL/linear_least_squares_fitting_3.h>
+#include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
+#include <CGAL/Triangulation_euclidean_traits_xy_3.h>
+#include <CGAL/Delaunay_triangulation_2.h>
 
-class CommonPlane : public Plane {
-	typedef CGAL::Cartesian<double>::Point_3 CGAL_Point;
+class Triangulation {
+	typedef CGAL::Exact_predicates_inexact_constructions_kernel::Point_3 CGAL_Point;
+	typedef CGAL::Delaunay_triangulation_2<CGAL::Triangulation_euclidean_traits_xy_3<
+		CGAL::Exact_predicates_inexact_constructions_kernel> > DelaunayTriangulation;
 	
 	public:
-	CommonPlane();
-	CommonPlane(const Camera&, const Camera&, const VisiblePoint*);
-	CommonPlane(const std::vector<CGAL_Point>&);
-	~CommonPlane();
-	
-	double fitting_quality() {return m_fitting_quality;}
-	
-	protected:
-	void best_fit_plane(const std::vector<CGAL_Point>&);
-	void ransac(const std::vector<CGAL_Point>&);
+	Triangulation(const Camera&, const VisiblePoint*);
+	~Triangulation();
 	
 	private:
-	double m_fitting_quality;
+	DelaunayTriangulation m_dt;
 };
 
 #endif
