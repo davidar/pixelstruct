@@ -21,6 +21,7 @@
 #include "bundleparser.h"
 #include "imagelist.h"
 #include "commonplane.h"
+#include "triangulation.h"
 
 struct GLImage {
 	int width, height;
