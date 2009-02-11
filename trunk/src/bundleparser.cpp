@@ -44,20 +44,20 @@ BundleParser::~BundleParser() {
 void BundleParser::parse(const char* file) {
 	ifstream fin(file);
 	if(!fin) {
-		cerr << "Unable to open file " << file << endl;
+		cerr << "[BundleParser::parse] Unable to open file " << file << endl;
 		exit(1);
 	} else {
-		cerr << "Successfully opened file " << file << endl;
+		cerr << "[BundleParser::parse] Successfully opened file " << file << endl;
 	}
 	
 	string header;
 	getline(fin, header);
-	cerr << "Bundle header: " << header << endl;
+	cerr << "[BundleParser::parse] Bundle header: " << header << endl;
 	
 	fin >> m_num_cameras >> m_num_points;
 	
-	cerr << m_num_cameras << " cameras" << endl;
-	cerr << m_num_points << " points" << endl;
+	cerr << "[BundleParser::parse] " << m_num_cameras << " cameras" << endl;
+	cerr << "[BundleParser::parse] " << m_num_points << " points" << endl;
 	
 	m_cameras = new Camera[m_num_cameras];
 	for(int i = 0; i < m_num_cameras; i++) {
@@ -87,7 +87,7 @@ void BundleParser::parse(const char* file) {
 		m_cameras[i] = camera;
 	}
 	
-	cerr << "Finished loading cameras" << endl;
+	cerr << "[BundleParser::parse] Finished loading cameras" << endl;
 	
 	m_points = new VisiblePoint[m_num_points];
 	for(int i = 0; i < m_num_points; i++) {
@@ -112,7 +112,7 @@ void BundleParser::parse(const char* file) {
 		m_points[i] = point;
 	}
 	
-	cerr << "Finished loading points" << endl;
+	cerr << "[BundleParser::parse] Finished loading points" << endl;
 	
 	fin.close();
 }

@@ -16,6 +16,8 @@
 #ifndef POINT_H
 #define POINT_H
 
+#include <cmath>
+
 class Point {
 	public:
 	Point();
@@ -25,6 +27,7 @@ class Point {
 	double y() const {return m_y;}
 	double z() const {return m_z;}
 	double sqdist() const {return m_x*m_x + m_y*m_y + m_z*m_z;} // square of the distance from the origin
+	double dist() const {return sqrt(sqdist());} // distance from the origin
 	
 	private:
 	double m_x, m_y, m_z;
