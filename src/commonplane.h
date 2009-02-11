@@ -27,9 +27,9 @@
 #include <CGAL/linear_least_squares_fitting_3.h>
 
 class CommonPlane : public Plane {
+	public:
 	typedef CGAL::Cartesian<double>::Point_3 CGAL_Point;
 	
-	public:
 	CommonPlane();
 	CommonPlane(const Camera&, const Camera&, const VisiblePoint*);
 	CommonPlane(const std::vector<CGAL_Point>&);

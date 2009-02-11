@@ -28,6 +28,7 @@ struct GLImage {
 	GLuint texture;
 	double opacity;
 	int camera;
+	Triangulation triangulation;
 };
 
 class GLWidget : public QGLWidget {
@@ -41,7 +42,10 @@ class GLWidget : public QGLWidget {
 	
 	protected:
 	void initializeGL();
-	void paintImagePlane(GLImage);
+	void paintImageTriangulation(const GLImage&);
+	void paintImageCommonPlane(const GLImage&);
+	void paintImageSimple(const GLImage&);
+	void paintImage(const GLImage&);
 	void paintGL();
 	void resizeGL(int width, int height);
 	void mousePressEvent(QMouseEvent* event);

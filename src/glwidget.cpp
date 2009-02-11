@@ -59,52 +59,79 @@ void GLWidget::initializeGL() {
 	glEndList();
 }
 
-void GLWidget::paintImagePlane(GLImage image) {
-	glPushMatrix();
-	
-	if(image.camera > -1) {
-		const Camera& c = m_parser->cameras()[image.camera];
-		
-		glEnable(GL_TEXTURE_2D);
-		glBindTexture(GL_TEXTURE_2D, image.texture);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glEnable(GL_BLEND); glDisable(GL_DEPTH_TEST);
-		
-		glMultMatrixd(c.matrix_l2w());
-		
-		glColor4f(1.0,1.0,1.0,image.opacity);
-		double maxx = 0.5*image.width/c.focal_length(), maxy = 0.5*image.height/c.focal_length();
-		
-		Plane local_plane = m_common_plane.transform(c.matrix_w2l()); // transform common plane to local coords
-		double d0 = local_plane.distance(Point(-maxx,-maxy,-1.0));
-		double d1 = local_plane.distance(Point(+maxx,-maxy,-1.0));
-		double d2 = local_plane.distance(Point(+maxx,+maxy,-1.0));
-		double d3 = local_plane.distance(Point(-maxx,+maxy,-1.0));
-		
-		// test if part or all of the image projected onto the common plane lies behind the camera
-		if(d0 <= 0.0 || d1 <= 0.0 || d2 <= 0.0 || d3 <= 0.0 ||
-		   isnan(d0) || isnan(d1) || isnan(d2) || isnan(d3)) {
-			// simple image projection
-			glBegin(GL_QUADS);
-				glTexCoord2d(0.0,0.0); glVertex3d(-maxx,-maxy,-1.0);
-				glTexCoord2d(1.0,0.0); glVertex3d(+maxx,-maxy,-1.0);
-				glTexCoord2d(1.0,1.0); glVertex3d(+maxx,+maxy,-1.0);
-				glTexCoord2d(0.0,1.0); glVertex3d(-maxx,+maxy,-1.0);
-			glEnd();
-		} else {
-			// common plane image projection
-			glBegin(GL_QUADS);
-				glTexCoord4d(0.0,0.0,0.0,d0); glVertex3d(d0*-maxx,d0*-maxy,-d0);
-				glTexCoord4d( d1,0.0,0.0,d1); glVertex3d(d1*+maxx,d1*-maxy,-d1);
-				glTexCoord4d( d2, d2,0.0,d2); glVertex3d(d2*+maxx,d2*+maxy,-d2);
-				glTexCoord4d(0.0, d3,0.0,d3); glVertex3d(d3*-maxx,d3*+maxy,-d3);
-			glEnd();
+void GLWidget::paintImageTriangulation(const GLImage& image) {
+	const Camera& c = m_parser->cameras()[image.camera];
+	double xrange = image.width/c.focal_length(), yrange = image.height/c.focal_length();
+	glBegin(GL_TRIANGLES);
+	for(Triangulation::face_iterator f  = image.triangulation.faces_begin();
+	                                 f != image.triangulation.faces_end(); f++) {
+		for(int i = 0; i < 3; i++) {
+			Point p = image.triangulation.get_point(f,i);
+			double d = p.dist();
+			double tx = (p.x() / -p.z()) / xrange + 0.5;
+			double ty = (p.y() / -p.z()) / yrange + 0.5;
+			glTexCoord4d(tx*d,ty*d,0.0,d);
+			glVertex3d(p.x(), p.y(), p.z());
 		}
-		
-		glDisable(GL_BLEND); glEnable(GL_DEPTH_TEST);
-		glDisable(GL_TEXTURE_2D);
+	}
+	glEnd();
+}
+
+void GLWidget::paintImageCommonPlane(const GLImage& image) {
+	const Camera& c = m_parser->cameras()[image.camera];
+	Plane local_plane = m_common_plane.transform(c.matrix_w2l()); // transform common plane to local coords
+	double maxx = 0.5*image.width/c.focal_length(), maxy = 0.5*image.height/c.focal_length();
+	double d0 = local_plane.distance(Point(-maxx,-maxy,-1.0));
+	double d1 = local_plane.distance(Point(+maxx,-maxy,-1.0));
+	double d2 = local_plane.distance(Point(+maxx,+maxy,-1.0));
+	double d3 = local_plane.distance(Point(-maxx,+maxy,-1.0));
+	
+	if(d0 <= 0.0 || d1 <= 0.0 || d2 <= 0.0 || d3 <= 0.0 ||
+	   isnan(d0) || isnan(d1) || isnan(d2) || isnan(d3)) {
+		/// if part or all of the image projected onto the common plane lies behind the camera,
+		/// or the distance to the plane cannot be found (possibly because the plane is invalid),
+		/// then revert to simple image plane
+		paintImageSimple(image);
+		return;
 	}
 	
+	glBegin(GL_QUADS);
+		glTexCoord4d(0.0,0.0,0.0,d0); glVertex3d(d0*-maxx,d0*-maxy,-d0);
+		glTexCoord4d( d1,0.0,0.0,d1); glVertex3d(d1*+maxx,d1*-maxy,-d1);
+		glTexCoord4d( d2, d2,0.0,d2); glVertex3d(d2*+maxx,d2*+maxy,-d2);
+		glTexCoord4d(0.0, d3,0.0,d3); glVertex3d(d3*-maxx,d3*+maxy,-d3);
+	glEnd();
+}
+
+void GLWidget::paintImageSimple(const GLImage& image) {
+	const Camera& c = m_parser->cameras()[image.camera];
+	double maxx = 0.5*image.width/c.focal_length(), maxy = 0.5*image.height/c.focal_length();
+	glBegin(GL_QUADS);
+		glTexCoord2d(0.0,0.0); glVertex3d(-maxx,-maxy,-1.0);
+		glTexCoord2d(1.0,0.0); glVertex3d(+maxx,-maxy,-1.0);
+		glTexCoord2d(1.0,1.0); glVertex3d(+maxx,+maxy,-1.0);
+		glTexCoord2d(0.0,1.0); glVertex3d(-maxx,+maxy,-1.0);
+	glEnd();
+}
+
+void GLWidget::paintImage(const GLImage& image) {
+	glPushMatrix();
+	const Camera& c = m_parser->cameras()[image.camera];
+	glMultMatrixd(c.matrix_l2w());
+	
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, image.texture);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND); glDisable(GL_DEPTH_TEST);
+	glColor4f(1.0,1.0,1.0,image.opacity);
+	
+	// TODO choose between these in the GUI:
+	paintImageTriangulation(image);
+// 	paintImageCommonPlane(image);
+// 	paintImageSimple(image);
+	
+	glDisable(GL_BLEND); glEnable(GL_DEPTH_TEST);
+	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 }
 
@@ -113,11 +140,20 @@ void GLWidget::paintGL() {
 	
 	glCallList(m_pointcloud);
 	
-	paintImagePlane(m_prev_image);
-	paintImagePlane(m_cur_image);
+	if(m_prev_image.camera > -1 && m_prev_image.opacity > 0.01) {
+		cerr << "[GLWidget::paintGL] Painting previous image with " << int(100*m_prev_image.opacity) << "% opacity" << endl;
+		paintImage(m_prev_image);
+	}
+	
+	if(m_cur_image.camera > -1 && m_cur_image.opacity > 0.01) {
+		cerr << "[GLWidget::paintGL] Painting current image with " << int(100*m_cur_image.opacity) << "% opacity" << endl;
+		paintImage(m_cur_image);
+	}
 }
 
 void GLWidget::resizeGL (int width, int height) {
+	cerr << "[GLWidget::resizeGL] Resizing GLWidget to " << width << "x" << height << endl;
+	
 	if(height == 0) height = 1; // prevent division by 0
 	
 	glMatrixMode(GL_PROJECTION);
@@ -126,9 +162,13 @@ void GLWidget::resizeGL (int width, int height) {
 	gluPerspective(60.0, float(width) / height, 0.001, 1000.0);
 	
 	glMatrixMode(GL_MODELVIEW);
+	
+	cerr << "[GLWidget::resizeGL] end" << endl;
 }
 
 void GLWidget::keyPressEvent (QKeyEvent* event) {
+	cerr << "[GLWidget::keyPressEvent] begin" << endl;
+	
 	switch (event->key()) {
 		case Qt::Key_Right:
 			gotoDirection(0); break;
@@ -145,6 +185,8 @@ void GLWidget::keyPressEvent (QKeyEvent* event) {
 		case Qt::Key_Return:
 			gotoNextCamera(); break;
 	}
+	
+	cerr << "[GLWidget::keyPressEvent] end" << endl;
 }
 
 void GLWidget::keyReleaseEvent (QKeyEvent* event) {}
@@ -156,27 +198,34 @@ void GLWidget::mouseMoveEvent (QMouseEvent* event) {}
 void GLWidget::mouseReleaseEvent (QMouseEvent* event) {}
 
 void GLWidget::focusInEvent(QFocusEvent* event) {
+	cerr << "[GLWidget::focusInEvent] begin" << endl;
 	if(m_cur_image.camera == -1)
 		gotoNextCamera();
+	cerr << "[GLWidget::focusInEvent] end" << endl;
 }
 
 void GLWidget::focusOutEvent(QFocusEvent* event) {}
 
 void GLWidget::gotoCamera(int target_camera) {
-	cerr << "Moving to camera " << target_camera << endl;
+	cerr << "[GLWidget::gotoCamera] Moving to camera " << target_camera << endl;
 	
 	const Camera& c1 = m_cur_image.camera < 0 ? Camera::Identity : m_parser->cameras()[m_cur_image.camera];
 	const Camera& c2 = m_parser->cameras()[target_camera];
 	
-	m_common_plane = CommonPlane(c1, c2, m_parser->points());
+	// TODO only calculate if common plane mode is in use (as to be set in the GUI):
+// 	cerr << "[GLWidget::gotoCamera] Generating common plane" << endl;
+// 	m_common_plane = CommonPlane(c1, c2, m_parser->points()); 
 	
-	// Triangulation prev_triangulation(c1, m_parser->points()); // TODO
-	// Triangulation cur_triangulation(c2, m_parser->points()); // TODO
-	
+	cerr << "[GLWidget::gotoCamera] Setting current camera to target" << endl;
 	glDeleteTextures(1, &(m_prev_image.texture));
 	m_prev_image = m_cur_image;
 	m_cur_image.camera = target_camera;
 	reloadTexture();
+	
+	// TODO only calculate if triangulation mode is in use (as to be set in the GUI):
+	cerr << "[GLWidget::gotoCamera] Generating triangulation" << endl;
+	m_cur_image.triangulation = Triangulation(c2, m_parser->points());
+	m_cur_image.triangulation.add_image_corners(0.5*m_cur_image.width/c2.focal_length(), 0.5*m_cur_image.height/c2.focal_length());
 	
 	for(double i = 0.0; i < 1.001; i += 0.1) {
 		usleep(1000000/25); // sleep for 1 frame @ 25fps
@@ -198,17 +247,23 @@ void GLWidget::gotoCamera(int target_camera) {
 		gluLookAt(cx,cy,cz, cx+dx,cy+dy,cz+dz, ux,uy,uz);
 		updateGL();
 	}
+	
+	cerr << "[GLWidget::gotoCamera] end" << endl;
 }
 
 void GLWidget::gotoNextCamera() {
+	cerr << "[GLWidget::gotoNextCamera] Moving to next camera" << endl;
 	int target_camera = m_cur_image.camera + 1;
 	while(m_parser->cameras()[target_camera].focal_length() == 0.0) target_camera++;
 	if(target_camera >= m_parser->num_cameras()) target_camera = 0;
 	while(m_parser->cameras()[target_camera].focal_length() == 0.0) target_camera++;
 	gotoCamera(target_camera);
+	cerr << "[GLWidget::gotoNextCamera] end" << endl;
 }
 
 void GLWidget::gotoDirection(int target_direction) {
+	cerr << "[GLWidget::gotoDirection] Moving in direction " << target_direction << endl;
+	
 	double closest_dist = DBL_MAX;
 	int closest_camera = -1;
 	const Camera& c1 = m_parser->cameras()[m_cur_image.camera];
@@ -237,6 +292,8 @@ void GLWidget::gotoDirection(int target_direction) {
 	}
 	
 	if(closest_camera >= 0) gotoCamera(closest_camera);
+	
+	cerr << "[GLWidget::gotoDirection] end" << endl;
 }
 
 void GLWidget::reloadTexture() {

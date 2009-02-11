@@ -18,6 +18,7 @@
 
 #include "camera.h"
 #include "visiblepoint.h"
+#include "commonplane.h"
 
 #include <vector>
 
@@ -26,13 +27,22 @@
 #include <CGAL/Delaunay_triangulation_2.h>
 
 class Triangulation {
+	public:
 	typedef CGAL::Exact_predicates_inexact_constructions_kernel::Point_3 CGAL_Point;
 	typedef CGAL::Delaunay_triangulation_2<CGAL::Triangulation_euclidean_traits_xy_3<
 		CGAL::Exact_predicates_inexact_constructions_kernel> > DelaunayTriangulation;
 	
-	public:
+	Triangulation();
 	Triangulation(const Camera&, const VisiblePoint*);
 	~Triangulation();
+	
+	typedef DelaunayTriangulation::Finite_faces_iterator face_iterator;
+	face_iterator faces_begin() const {return m_dt.finite_faces_begin();}
+	face_iterator faces_end() const   {return m_dt.finite_faces_end();}
+	
+	void insert_point(double x, double y, double z);
+	Point get_point(const face_iterator& f, int i) const;
+	void add_image_corners(double maxx, double maxy);
 	
 	private:
 	DelaunayTriangulation m_dt;

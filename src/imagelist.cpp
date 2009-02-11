@@ -44,10 +44,10 @@ ImageList::~ImageList() {
 void ImageList::parse(const char* file, const char* directory) {
 	ifstream fin(file);
 	if(!fin) {
-		cerr << "Unable to open file " << file << endl;
+		cerr << "[ImageList::parse] Unable to open file " << file << endl;
 		exit(1);
 	} else {
-		cerr << "Successfully opened file " << file << endl;
+		cerr << "[ImageList::parse] Successfully opened file " << file << endl;
 	}
 	
 	for(int i = 0; i < m_num_images; i++) {

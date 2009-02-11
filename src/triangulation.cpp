@@ -16,26 +16,55 @@
 #include "triangulation.h"
 
 using std::vector;
+using std::cerr;
+using std::endl;
+
+Triangulation::Triangulation() {
+}
 
 Triangulation::Triangulation(const Camera& c, const VisiblePoint* points) {
 	for(vector<int>::const_iterator i = c.visible_points().begin(); i != c.visible_points().end(); i++) {
-		const double x = points[*i].x();
-		const double y = points[*i].y();
-		const double z = points[*i].z();
-		m_dt.insert(CGAL_Point(x/z, y/z, z));
-	}
-	
-	// TODO:
-	std::cerr << "Triangulation contains " << m_dt.number_of_vertices() << " vertices:" << std::endl;
-	for(DelaunayTriangulation::Finite_faces_iterator f = m_dt.finite_faces_begin(); f != m_dt.finite_faces_end(); f++) {
-		const DelaunayTriangulation::Point p0 = f->vertex(0)->point();
-		const DelaunayTriangulation::Point p1 = f->vertex(1)->point();
-		const DelaunayTriangulation::Point p2 = f->vertex(2)->point();
-		std::cerr << "(" << p0.x() << "," << p0.y() << "," << p0.z() << ")"
-		          << "(" << p1.x() << "," << p1.y() << "," << p1.z() << ")"
-		          << "(" << p2.x() << "," << p2.y() << "," << p2.z() << ")" << std::endl;
+		const Point& p = c.point_w2l(points[*i]);
+		const double x = p.x();
+		const double y = p.y();
+		const double z = p.z();
+		insert_point(x/z, y/z, z); // divide by z to correct for perspective
 	}
 }
 
 Triangulation::~Triangulation() {
+	m_dt.clear();
+}
+
+void Triangulation::insert_point(double x, double y, double z) {
+// 	cerr << "[Triangulation::insert_point] Inserting point (" << x << "," << y << "," << z << ")" << endl;
+	try {
+		m_dt.insert(CGAL_Point(x, y, z));
+	} catch(const std::logic_error& e) {
+		// this seems to be (maybe) a bug in CGAL which throws an error when the same point is inserted twice,
+		// even though the documentation says that the library handles such situations
+		cerr << "[Triangulation::insert_point] caught std::logic_error from DelaunayTriangulation::insert" << endl;
+	}
+}
+
+Point Triangulation::get_point(const face_iterator& f, int i) const {
+	const DelaunayTriangulation::Point p = f->vertex(i)->point();
+	return Point(p.x()*p.z(), p.y()*p.z(), p.z());
+}
+
+void Triangulation::add_image_corners(double maxx, double maxy) {
+	double average_depth = 0;
+	int num_points = 0;
+	
+	DelaunayTriangulation::Vertex_circulator vc = m_dt.incident_vertices(m_dt.infinite_vertex()), vc_init = vc;
+	if(vc != 0) do { // traverse the convex hull
+		average_depth += vc->point().z();
+		num_points++;
+	} while(++vc != vc_init);
+	average_depth /= num_points;
+	
+	insert_point(+maxx,+maxy,average_depth);
+	insert_point(-maxx,+maxy,average_depth);
+	insert_point(-maxx,-maxy,average_depth);
+	insert_point(+maxx,-maxy,average_depth);
 }
