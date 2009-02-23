@@ -25,7 +25,7 @@ Plane::Plane(double a, double b, double c, double d)
 Plane::~Plane() {
 }
 
-Plane Plane::transform(const double* m) {
+Plane Plane::transform(const double* m) const {
 	return Plane(
 		m_a*m[ 0],
 		m_b*m[ 5],
@@ -34,13 +34,13 @@ Plane Plane::transform(const double* m) {
 	);
 }
 
-double Plane::distance(const Point& p) {
+double Plane::distance(const Point& p) const {
 	/// for a line that begins at the origin, passes through Point p, and ends at this Plane
 	/// the length of the line is equal to distance(p) times the distance between p and the origin
 	return m_d / (m_a*p.x() + m_b*p.y() + m_c*p.z());
 }
 
-double Plane::shortest_sqdist(const Point& p) {
+double Plane::shortest_sqdist(const Point& p) const {
 	/// square of shortest distance between this Plane and Point p
 	double n = m_a*p.x() + m_b*p.y() + m_c*p.z() - m_d;
 	return (n*n) / (m_a*m_a + m_b*m_b + m_c*m_c);

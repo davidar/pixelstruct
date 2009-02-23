@@ -31,13 +31,23 @@ using std::cerr;
 using std::endl;
 
 GLWidget::GLWidget(BundleParser* parser, ImageList* imagelist, QWidget* parent)
-	: QGLWidget(parent), m_parser(parser), m_imagelist(imagelist) {
+	: QGLWidget(parent), m_parser(parser), m_imagelist(imagelist), m_transmode(0) {
 	setFocusPolicy(Qt::ClickFocus);
 	m_cur_image.camera = -1;
 	m_prev_image.camera = -1;
 }
 
 GLWidget::~GLWidget() {
+}
+
+void GLWidget::setTransMode(int transmode) {
+	m_transmode = transmode;
+	const Camera& c = m_cur_image.camera < 0 ? Camera::Identity : m_parser->cameras()[m_cur_image.camera];
+	if(m_transmode == 2) {
+		cerr << "[GLWidget::setTransMode] Generating triangulation" << endl;
+		m_cur_image.triangulation = Triangulation(c, m_parser->points());
+		m_cur_image.triangulation.add_image_corners(0.5*m_cur_image.width/c.focal_length(), 0.5*m_cur_image.height/c.focal_length());
+	}
 }
 
 void GLWidget::initializeGL() {
@@ -59,7 +69,7 @@ void GLWidget::initializeGL() {
 	glEndList();
 }
 
-void GLWidget::paintImageTriangulation(const GLImage& image) {
+void GLWidget::paintImageTriangulation(const GLWImage& image) {
 	const Camera& c = m_parser->cameras()[image.camera];
 	double xrange = image.width/c.focal_length(), yrange = image.height/c.focal_length();
 	glBegin(GL_TRIANGLES);
@@ -77,7 +87,7 @@ void GLWidget::paintImageTriangulation(const GLImage& image) {
 	glEnd();
 }
 
-void GLWidget::paintImageCommonPlane(const GLImage& image) {
+void GLWidget::paintImageCommonPlane(const GLWImage& image) {
 	const Camera& c = m_parser->cameras()[image.camera];
 	Plane local_plane = m_common_plane.transform(c.matrix_w2l()); // transform common plane to local coords
 	double maxx = 0.5*image.width/c.focal_length(), maxy = 0.5*image.height/c.focal_length();
@@ -86,10 +96,9 @@ void GLWidget::paintImageCommonPlane(const GLImage& image) {
 	double d2 = local_plane.distance(Point(+maxx,+maxy,-1.0));
 	double d3 = local_plane.distance(Point(-maxx,+maxy,-1.0));
 	
-	if(d0 <= 0.0 || d1 <= 0.0 || d2 <= 0.0 || d3 <= 0.0 ||
-	   isnan(d0) || isnan(d1) || isnan(d2) || isnan(d3)) {
+	if(!m_common_plane.is_valid() ||
+	   d0 <= 0.0 || d1 <= 0.0 || d2 <= 0.0 || d3 <= 0.0) {
 		/// if part or all of the image projected onto the common plane lies behind the camera,
-		/// or the distance to the plane cannot be found (possibly because the plane is invalid),
 		/// then revert to simple image plane
 		paintImageSimple(image);
 		return;
@@ -103,7 +112,7 @@ void GLWidget::paintImageCommonPlane(const GLImage& image) {
 	glEnd();
 }
 
-void GLWidget::paintImageSimple(const GLImage& image) {
+void GLWidget::paintImageSimple(const GLWImage& image) {
 	const Camera& c = m_parser->cameras()[image.camera];
 	double maxx = 0.5*image.width/c.focal_length(), maxy = 0.5*image.height/c.focal_length();
 	glBegin(GL_QUADS);
@@ -114,7 +123,7 @@ void GLWidget::paintImageSimple(const GLImage& image) {
 	glEnd();
 }
 
-void GLWidget::paintImage(const GLImage& image) {
+void GLWidget::paintImage(const GLWImage& image) {
 	glPushMatrix();
 	const Camera& c = m_parser->cameras()[image.camera];
 	glMultMatrixd(c.matrix_l2w());
@@ -125,10 +134,12 @@ void GLWidget::paintImage(const GLImage& image) {
 	glEnable(GL_BLEND); glDisable(GL_DEPTH_TEST);
 	glColor4f(1.0,1.0,1.0,image.opacity);
 	
-	// TODO choose between these in the GUI:
-	paintImageTriangulation(image);
-// 	paintImageCommonPlane(image);
-// 	paintImageSimple(image);
+	switch(m_transmode) {
+		case 0: paintImageSimple(image); break;
+		case 1: paintImageCommonPlane(image); break;
+		case 2: paintImageTriangulation(image); break;
+		default: paintImageSimple(image); break;
+	}
 	
 	glDisable(GL_BLEND); glEnable(GL_DEPTH_TEST);
 	glDisable(GL_TEXTURE_2D);
@@ -212,20 +223,20 @@ void GLWidget::gotoCamera(int target_camera) {
 	const Camera& c1 = m_cur_image.camera < 0 ? Camera::Identity : m_parser->cameras()[m_cur_image.camera];
 	const Camera& c2 = m_parser->cameras()[target_camera];
 	
-	// TODO only calculate if common plane mode is in use (as to be set in the GUI):
-// 	cerr << "[GLWidget::gotoCamera] Generating common plane" << endl;
-// 	m_common_plane = CommonPlane(c1, c2, m_parser->points()); 
-	
 	cerr << "[GLWidget::gotoCamera] Setting current camera to target" << endl;
 	glDeleteTextures(1, &(m_prev_image.texture));
 	m_prev_image = m_cur_image;
 	m_cur_image.camera = target_camera;
 	reloadTexture();
 	
-	// TODO only calculate if triangulation mode is in use (as to be set in the GUI):
-	cerr << "[GLWidget::gotoCamera] Generating triangulation" << endl;
-	m_cur_image.triangulation = Triangulation(c2, m_parser->points());
-	m_cur_image.triangulation.add_image_corners(0.5*m_cur_image.width/c2.focal_length(), 0.5*m_cur_image.height/c2.focal_length());
+	if(m_transmode == 1) {
+		cerr << "[GLWidget::gotoCamera] Generating common plane" << endl;
+		m_common_plane = CommonPlane(c1, c2, m_parser->points());
+	} else if(m_transmode == 2) {
+		cerr << "[GLWidget::gotoCamera] Generating triangulation" << endl;
+		m_cur_image.triangulation = Triangulation(c2, m_parser->points());
+		m_cur_image.triangulation.add_image_corners(0.5*m_cur_image.width/c2.focal_length(), 0.5*m_cur_image.height/c2.focal_length());
+	}
 	
 	for(double i = 0.0; i < 1.001; i += 0.1) {
 		usleep(1000000/25); // sleep for 1 frame @ 25fps

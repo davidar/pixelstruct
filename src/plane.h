@@ -24,14 +24,16 @@ class Plane {
 	Plane(double, double, double, double);
 	~Plane();
 	
-	Plane transform(const double*);
-	double distance(const Point&);
-	double shortest_sqdist(const Point&);
+	Plane transform(const double*) const;
+	double distance(const Point&) const;
+	double shortest_sqdist(const Point&) const;
 	
-	double a() {return m_a;}
-	double b() {return m_b;}
-	double c() {return m_c;}
-	double d() {return m_d;}
+	double a() const {return m_a;}
+	double b() const {return m_b;}
+	double c() const {return m_c;}
+	double d() const {return m_d;}
+	
+	bool is_valid() const {return !(m_a == 0 && m_b == 0 && m_c == 0);}
 	
 	protected:
 	double m_a, m_b, m_c, m_d; // m_a*x + m_b*y + m_c*z = m_d

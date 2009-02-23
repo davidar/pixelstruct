@@ -27,6 +27,8 @@ MainWindow::MainWindow()
 	resize(sizeHint());
 	createActions();
 	createMenus();
+	
+	m_transmode_2->setChecked(true);
 }
 
 MainWindow::~MainWindow() {
@@ -41,6 +43,18 @@ void MainWindow::createActions() {
 	m_exitAct->setShortcut(Qt::Key_Escape);
 	connect(m_exitAct, SIGNAL(triggered()), qApp, SLOT(closeAllWindows()));
 	
+	m_transmode_group = new QActionGroup(this);
+	m_transmode_0 = new QAction(tr("&Simple transitions"), this);
+	m_transmode_0->setCheckable(true);
+	m_transmode_group->addAction(m_transmode_0);
+	m_transmode_1 = new QAction(tr("&Common Plane transitions"), this);
+	m_transmode_1->setCheckable(true);
+	m_transmode_group->addAction(m_transmode_1);
+	m_transmode_2 = new QAction(tr("&Triangulated transitions"), this);
+	m_transmode_2->setCheckable(true);
+	m_transmode_group->addAction(m_transmode_2);
+	connect(m_transmode_group, SIGNAL(triggered(QAction*)), this, SLOT(setTransMode(QAction*)));
+	
 	m_aboutAct = new QAction(tr("&About"), this);
 	connect(m_aboutAct, SIGNAL(triggered()), this, SLOT(about()));
 	
@@ -52,6 +66,9 @@ void MainWindow::createMenus() {
 	QMenu* fileMenu = menuBar()->addMenu(tr("&File"));
 	fileMenu->addAction(m_openAct);
 	fileMenu->addAction(m_exitAct);
+	
+	QMenu* viewMenu = menuBar()->addMenu(tr("&View"));
+	viewMenu->addActions(m_transmode_group->actions());
 	
 	QMenu* helpMenu = menuBar()->addMenu(tr("&Help"));
 	helpMenu->addAction(m_aboutAct);
@@ -71,6 +88,16 @@ void MainWindow::openImageDirectory() {
 	m_glwidget = new GLWidget(m_bundleparser, m_imagelist, this);
 	setCentralWidget(m_glwidget);
 	m_glwidget->setFocus();
+	setTransMode(m_transmode_group->checkedAction());
+}
+
+void MainWindow::setTransMode(QAction* act) {
+	     if(act == m_transmode_0)
+		m_glwidget->setTransMode(0);
+	else if(act == m_transmode_1)
+		m_glwidget->setTransMode(1);
+	else if(act == m_transmode_2)
+		m_glwidget->setTransMode(2);
 }
 
 void MainWindow::about() {

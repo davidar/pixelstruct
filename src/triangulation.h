@@ -40,6 +40,8 @@ class Triangulation {
 	face_iterator faces_begin() const {return m_dt.finite_faces_begin();}
 	face_iterator faces_end() const   {return m_dt.finite_faces_end();}
 	
+	int num_vertices() const {return m_dt.number_of_vertices();}
+	
 	void insert_point(double x, double y, double z);
 	Point get_point(const face_iterator& f, int i) const;
 	void add_image_corners(double maxx, double maxy);
