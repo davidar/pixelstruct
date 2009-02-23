@@ -16,6 +16,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QtGui>
 #include <QMainWindow>
 #include <QLabel>
 
@@ -39,6 +40,7 @@ class MainWindow : public QMainWindow {
 	
 	protected Q_SLOTS:
 	void openImageDirectory();
+	void setTransMode(QAction*);
 	void about();
 	
 	private:
@@ -46,8 +48,9 @@ class MainWindow : public QMainWindow {
 	BundleParser* m_bundleparser;
 	ImageList* m_imagelist;
 	
-	QAction* m_openAct,* m_exitAct,* m_aboutAct,* m_aboutQtAct;
-	QLabel* m_status;
+	QAction* m_openAct,* m_exitAct,* m_aboutAct,* m_aboutQtAct,
+	       * m_transmode_0, * m_transmode_1, * m_transmode_2;
+	QActionGroup* m_transmode_group;
 };
 
 #endif

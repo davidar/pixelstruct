@@ -23,16 +23,16 @@
 #include "commonplane.h"
 #include "triangulation.h"
 
-struct GLImage {
-	int width, height;
-	GLuint texture;
-	double opacity;
-	int camera;
-	Triangulation triangulation;
-};
-
 class GLWidget : public QGLWidget {
 	Q_OBJECT
+	
+	struct GLWImage {
+		int width, height;
+		GLuint texture;
+		double opacity;
+		int camera;
+		Triangulation triangulation;
+	};
 	
 	public:
 	GLWidget(BundleParser*, ImageList*, QWidget* = 0);
@@ -40,12 +40,14 @@ class GLWidget : public QGLWidget {
 	
 	QSize minimumSizeHint() const {return QSize(50, 50);}
 	
+	void setTransMode(int transmode);
+	
 	protected:
 	void initializeGL();
-	void paintImageTriangulation(const GLImage&);
-	void paintImageCommonPlane(const GLImage&);
-	void paintImageSimple(const GLImage&);
-	void paintImage(const GLImage&);
+	void paintImageTriangulation(const GLWImage&);
+	void paintImageCommonPlane(const GLWImage&);
+	void paintImageSimple(const GLWImage&);
+	void paintImage(const GLWImage&);
 	void paintGL();
 	void resizeGL(int width, int height);
 	void mousePressEvent(QMouseEvent* event);
@@ -64,9 +66,10 @@ class GLWidget : public QGLWidget {
 	GLuint m_pointcloud;
 	BundleParser* m_parser;
 	ImageList* m_imagelist;
-	GLImage m_cur_image;
-	GLImage m_prev_image;
+	GLWImage m_cur_image;
+	GLWImage m_prev_image;
 	CommonPlane m_common_plane;
+	int m_transmode;
 };
 
 #endif
