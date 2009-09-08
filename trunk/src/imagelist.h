@@ -1,4 +1,4 @@
-// Copyright (c) 2009 David Roberts <dvdr18@gmail.com>
+// Copyright (c) 2009 David Roberts <d@vidr.cc>
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,19 +22,19 @@
 #include <QImage>
 
 class ImageList {
-	public:
-	ImageList(const char*, const char*, int);
-	ImageList(QString, QString, int);
-	~ImageList();
-	
-	const QImage loadImage(int) const;
-	
-	protected:
-	void parse(const char*, const char*);
-	
-	private:
-	int m_num_images;
-	std::string* m_filenames;
+    public:
+    ImageList(const char*, const char*, int);
+    ImageList(QString, QString, int);
+    ~ImageList();
+    
+    const QImage loadImage(int) const;
+    
+    protected:
+    void parse(const char*, const char*);
+    
+    private:
+    int m_num_images;
+    std::string* m_filenames;
 };
 
 #endif

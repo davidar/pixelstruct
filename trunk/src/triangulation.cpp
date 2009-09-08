@@ -1,4 +1,4 @@
-// Copyright (c) 2009 David Roberts <dvdr18@gmail.com>
+// Copyright (c) 2009 David Roberts <d@vidr.cc>
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,48 +23,53 @@ Triangulation::Triangulation() {
 }
 
 Triangulation::Triangulation(const Camera& c, const VisiblePoint* points) {
-	for(vector<int>::const_iterator i = c.visible_points().begin(); i != c.visible_points().end(); i++) {
-		const Point& p = c.point_w2l(points[*i]);
-		const double x = p.x();
-		const double y = p.y();
-		const double z = p.z();
-		insert_point(x/z, y/z, z); // divide by z to correct for perspective
-	}
+    for(vector<int>::const_iterator i = c.visible_points().begin();
+        i != c.visible_points().end(); i++) {
+        const Point& p = c.point_w2l(points[*i]);
+        const double x = p.x();
+        const double y = p.y();
+        const double z = p.z();
+        insert_point(x/z, y/z, z); // divide by z to correct for perspective
+    }
 }
 
 Triangulation::~Triangulation() {
-	m_dt.clear();
+    m_dt.clear();
 }
 
 void Triangulation::insert_point(double x, double y, double z) {
-// 	cerr << "[Triangulation::insert_point] Inserting point (" << x << "," << y << "," << z << ")" << endl;
-	try {
-		m_dt.insert(CGAL_Point(x, y, z));
-	} catch(const std::logic_error& e) {
-		// this seems to be (maybe) a bug in CGAL which throws an error when the same point is inserted twice,
-		// even though the documentation says that the library handles such situations
-		cerr << "[Triangulation::insert_point] caught std::logic_error from DelaunayTriangulation::insert" << endl;
-	}
+    //cerr << "[Triangulation::insert_point] Inserting point ("
+    //     << x << "," << y << "," << z << ")" << endl;
+    try {
+        m_dt.insert(CGAL_Point(x, y, z));
+    } catch(const std::logic_error& e) {
+        // this seems to be (maybe) a bug in CGAL which throws an error when
+        // the same point is inserted twice, even though the documentation says
+        // that the library handles such situations
+        cerr << "[Triangulation::insert_point] caught std::logic_error "
+                "from DelaunayTriangulation::insert" << endl;
+    }
 }
 
 Point Triangulation::get_point(const face_iterator& f, int i) const {
-	const DelaunayTriangulation::Point p = f->vertex(i)->point();
-	return Point(p.x()*p.z(), p.y()*p.z(), p.z());
+    const DelaunayTriangulation::Point p = f->vertex(i)->point();
+    return Point(p.x()*p.z(), p.y()*p.z(), p.z());
 }
 
 void Triangulation::add_image_corners(double maxx, double maxy) {
-	double average_depth = 0;
-	int num_points = 0;
-	
-	DelaunayTriangulation::Vertex_circulator vc = m_dt.incident_vertices(m_dt.infinite_vertex()), vc_init = vc;
-	if(vc != 0) do { // traverse the convex hull
-		average_depth += vc->point().z();
-		num_points++;
-	} while(++vc != vc_init);
-	average_depth /= num_points;
-	
-	insert_point(+maxx,+maxy,average_depth);
-	insert_point(-maxx,+maxy,average_depth);
-	insert_point(-maxx,-maxy,average_depth);
-	insert_point(+maxx,-maxy,average_depth);
+    double average_depth = 0;
+    int num_points = 0;
+    
+    DelaunayTriangulation::Vertex_circulator vc =
+        m_dt.incident_vertices(m_dt.infinite_vertex()), vc_init = vc;
+    if(vc != 0) do { // traverse the convex hull
+        average_depth += vc->point().z();
+        num_points++;
+    } while(++vc != vc_init);
+    average_depth /= num_points;
+    
+    insert_point(+maxx,+maxy,average_depth);
+    insert_point(-maxx,+maxy,average_depth);
+    insert_point(-maxx,-maxy,average_depth);
+    insert_point(+maxx,-maxy,average_depth);
 }

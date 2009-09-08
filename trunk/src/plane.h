@@ -1,4 +1,4 @@
-// Copyright (c) 2009 David Roberts <dvdr18@gmail.com>
+// Copyright (c) 2009 David Roberts <d@vidr.cc>
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,24 +19,24 @@
 #include "point.h"
 
 class Plane {
-	public:
-	Plane();
-	Plane(double, double, double, double);
-	~Plane();
-	
-	Plane transform(const double*) const;
-	double distance(const Point&) const;
-	double shortest_sqdist(const Point&) const;
-	
-	double a() const {return m_a;}
-	double b() const {return m_b;}
-	double c() const {return m_c;}
-	double d() const {return m_d;}
-	
-	bool is_valid() const {return !(m_a == 0 && m_b == 0 && m_c == 0);}
-	
-	protected:
-	double m_a, m_b, m_c, m_d; // m_a*x + m_b*y + m_c*z = m_d
+    public:
+    Plane();
+    Plane(double, double, double, double);
+    ~Plane();
+    
+    Plane transform(const double*) const;
+    double distance(const Point&) const;
+    double shortest_sqdist(const Point&) const;
+    
+    double a() const {return m_a;}
+    double b() const {return m_b;}
+    double c() const {return m_c;}
+    double d() const {return m_d;}
+    
+    bool is_valid() const {return !(m_a == 0 && m_b == 0 && m_c == 0);}
+    
+    protected:
+    double m_a, m_b, m_c, m_d; // m_a*x + m_b*y + m_c*z = m_d
 };
 
 #endif

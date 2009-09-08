@@ -1,4 +1,4 @@
-// Copyright (c) 2009 David Roberts <dvdr18@gmail.com>
+// Copyright (c) 2009 David Roberts <d@vidr.cc>
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,14 +21,14 @@
 #include <QColor>
 
 class VisiblePoint : public Point {
-	public:
-	VisiblePoint();
-	VisiblePoint(const Point, const QColor);
-	~VisiblePoint();
-	QColor col() const {return m_col;}
-	
-	private:
-	QColor m_col;
+    public:
+    VisiblePoint();
+    VisiblePoint(const Point, const QColor);
+    ~VisiblePoint();
+    QColor col() const {return m_col;}
+    
+    private:
+    QColor m_col;
 };
 
 #endif

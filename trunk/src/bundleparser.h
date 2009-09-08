@@ -1,4 +1,4 @@
-// Copyright (c) 2009 David Roberts <dvdr18@gmail.com>
+// Copyright (c) 2009 David Roberts <d@vidr.cc>
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,22 +22,22 @@
 #include <QString>
 
 class BundleParser {
-	public:
-	BundleParser(const char* file);
-	BundleParser(QString file);
-	~BundleParser();
-	const Camera* cameras() const {return m_cameras;}
-	const VisiblePoint* points() const {return m_points;}
-	int num_cameras() const {return m_num_cameras;}
-	int num_points() const {return m_num_points;}
-	
-	protected:
-	void parse(const char* file);
-	
-	private:
-	Camera* m_cameras;
-	VisiblePoint* m_points;
-	int m_num_cameras, m_num_points;
+    public:
+    BundleParser(const char* file);
+    BundleParser(QString file);
+    ~BundleParser();
+    const Camera* cameras() const {return m_cameras;}
+    const VisiblePoint* points() const {return m_points;}
+    int num_cameras() const {return m_num_cameras;}
+    int num_points() const {return m_num_points;}
+    
+    protected:
+    void parse(const char* file);
+    
+    private:
+    Camera* m_cameras;
+    VisiblePoint* m_points;
+    int m_num_cameras, m_num_points;
 };
 
 #endif
