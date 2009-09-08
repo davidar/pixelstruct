@@ -44,13 +44,13 @@ class MainWindow : public QMainWindow {
     void about();
     
     private:
-    GLWidget* m_glwidget;
-    BundleParser* m_bundleparser;
-    ImageList* m_imagelist;
+    GLWidget *m_glwidget;
+    BundleParser *m_bundleparser;
+    ImageList *m_imagelist;
     
-    QAction* m_openAct,* m_exitAct,* m_aboutAct,* m_aboutQtAct,
-           * m_transmode_0, * m_transmode_1, * m_transmode_2;
-    QActionGroup* m_transmode_group;
+    QAction *m_openAct, *m_exitAct, *m_aboutAct, *m_aboutQtAct,
+            *m_transmode_none, *m_transmode_0, *m_transmode_1, *m_transmode_2;
+    QActionGroup *m_transmode_group;
 };
 
 #endif
