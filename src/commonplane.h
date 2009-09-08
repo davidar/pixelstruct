@@ -1,4 +1,4 @@
-// Copyright (c) 2009 David Roberts <dvdr18@gmail.com>
+// Copyright (c) 2009 David Roberts <d@vidr.cc>
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -27,22 +27,22 @@
 #include <CGAL/linear_least_squares_fitting_3.h>
 
 class CommonPlane : public Plane {
-	public:
-	typedef CGAL::Cartesian<double>::Point_3 CGAL_Point;
-	
-	CommonPlane();
-	CommonPlane(const Camera&, const Camera&, const VisiblePoint*);
-	CommonPlane(const std::vector<CGAL_Point>&);
-	~CommonPlane();
-	
-	double fitting_quality() {return m_fitting_quality;}
-	
-	protected:
-	void best_fit_plane(const std::vector<CGAL_Point>&);
-	void ransac(const std::vector<CGAL_Point>&);
-	
-	private:
-	double m_fitting_quality;
+    public:
+    typedef CGAL::Cartesian<double>::Point_3 CGAL_Point;
+    
+    CommonPlane();
+    CommonPlane(const Camera&, const Camera&, const VisiblePoint*);
+    CommonPlane(const std::vector<CGAL_Point>&);
+    ~CommonPlane();
+    
+    double fitting_quality() {return m_fitting_quality;}
+    
+    protected:
+    void best_fit_plane(const std::vector<CGAL_Point>&);
+    void ransac(const std::vector<CGAL_Point>&);
+    
+    private:
+    double m_fitting_quality;
 };
 
 #endif

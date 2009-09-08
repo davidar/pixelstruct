@@ -1,7 +1,8 @@
 ABOUT
-PixelStruct is an opensource tool for visualizing 3D scenes reconstructed from
-photographs. It uses the opensource structure-from-motion system Bundler, which
-is based on the same research as Microsoft Live Labs Photosynth.
+PixelStruct[1] is an opensource tool for visualizing 3D scenes reconstructed
+from photographs. It uses the opensource structure-from-motion system
+Bundler[2], which is based on the same research as Microsoft Live Labs
+Photosynth[3].
 
 HOW TO COMPILE
 PixelStruct requires the following libraries:
@@ -17,28 +18,30 @@ either copy into your PATH, or run directly with:
   ./build/src/pixelstruct
 
 USAGE
-PixelStruct requires Bundler, which can be downloaded from
-<http://phototour.cs.washington.edu/bundler/>. First, you need to manually run
-Bundler on a directory of images as described at either
-<http://phototour.cs.washington.edu/bundler/bundler-v0.2-manual.html> or the
-README.txt file contained in the Bundler distribution.
+PixelStruct requires Bundler, which can be downloaded from [2]. First, you need
+to manually run Bundler on a directory of images as described in the README.txt
+file contained in the Bundler distribution.
 
 Once Bundler has completed processing the images, the image set can be loaded
 into PixelStruct. Launch PixelStruct as described above, and go to "File>Open
 image directory". Navigate into the image directory you ran Bundler on, and hit
-"Choose". The 3D point cloud will be loaded into the window, and once the viewer
-has focus (you may have to click on it for this), the camera will focus on the
-first image. You can now hit your Return key to move to the next image, or use
-your arrow keys to move to another image in the chosen direction. Pressing Page
-Up and Page Down will attempt to move the camera closer to and further away from
-the photographed object.
+"Choose". The 3D point cloud will be loaded into the window, and once the
+viewer has focus (you may have to click on it for this), the camera will focus
+on the first image. You can now hit your Return key to move to the next image,
+or use your arrow keys to move to another image in the chosen direction.
+Pressing Page Up and Page Down will attempt to move the camera closer to and
+further away from the photographed object.
 
 QPL-GPL INCOMPATIBILITY NOTICE
-As portions of CGAL are licensed under the QPL
-<http://doc.trolltech.com/4.3/qpl.html> which is incompatible with the GPL (see
-the QPL secction of <http://www.fsf.org/licensing/licenses/index_html>), the
-following notice is required:
+As portions of CGAL are licensed under the QPL which is incompatible with the
+GPL (see the QPL secction of [5]), the following notice is required:
   As a special exception, you have permission to link this program
   with the CGAL library and distribute executables, as long as you
   follow the requirements of the GNU GPL in regard to all of the
   software in the executable aside from CGAL.
+
+[1] http://da.vidr.cc/projects/pixelstruct/
+[2] http://phototour.cs.washington.edu/bundler/
+[3] http://photosynth.net/
+[4] http://doc.trolltech.com/4.3/qpl.html
+[5] http://www.fsf.org/licensing/licenses/index_html

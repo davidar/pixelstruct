@@ -1,4 +1,4 @@
-// Copyright (c) 2009 David Roberts <dvdr18@gmail.com>
+// Copyright (c) 2009 David Roberts <d@vidr.cc>
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,18 +19,20 @@
 #include <cmath>
 
 class Point {
-	public:
-	Point();
-	Point(const double, const double, const double);
-	~Point();
-	double x() const {return m_x;}
-	double y() const {return m_y;}
-	double z() const {return m_z;}
-	double sqdist() const {return m_x*m_x + m_y*m_y + m_z*m_z;} // square of the distance from the origin
-	double dist() const {return sqrt(sqdist());} // distance from the origin
-	
-	private:
-	double m_x, m_y, m_z;
+    public:
+    Point();
+    Point(const double, const double, const double);
+    ~Point();
+    double x() const {return m_x;}
+    double y() const {return m_y;}
+    double z() const {return m_z;}
+    double sqdist() const { // square of the distance from the origin
+        return m_x*m_x + m_y*m_y + m_z*m_z;}
+    double dist() const { // distance from the origin
+        return sqrt(sqdist());}
+    
+    private:
+    double m_x, m_y, m_z;
 };
 
 #endif

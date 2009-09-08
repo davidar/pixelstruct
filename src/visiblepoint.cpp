@@ -1,4 +1,4 @@
-// Copyright (c) 2009 David Roberts <dvdr18@gmail.com>
+// Copyright (c) 2009 David Roberts <d@vidr.cc>
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@ VisiblePoint::VisiblePoint() {
 }
 
 VisiblePoint::VisiblePoint(const Point p, const QColor col)
-	: Point(p), m_col(col) {
+    : Point(p), m_col(col) {
 }
 
 VisiblePoint::~VisiblePoint() {

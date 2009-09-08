@@ -1,4 +1,4 @@
-// Copyright (c) 2009 David Roberts <dvdr18@gmail.com>
+// Copyright (c) 2009 David Roberts <d@vidr.cc>
 // 
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -26,15 +26,15 @@ using std::getline;
 using std::ifstream;
 
 ImageList::ImageList(const char* file, const char* directory, int num_images)
-	: m_num_images(num_images) {
-	m_filenames = new string[m_num_images];
-	parse(file, directory);
+    : m_num_images(num_images) {
+    m_filenames = new string[m_num_images];
+    parse(file, directory);
 }
 
 ImageList::ImageList(QString file, QString directory, int num_images)
-	: m_num_images(num_images) {
-	m_filenames = new string[m_num_images];
-	parse(file.toStdString().c_str(), directory.toStdString().c_str());
+    : m_num_images(num_images) {
+    m_filenames = new string[m_num_images];
+    parse(file.toStdString().c_str(), directory.toStdString().c_str());
 }
 
 
@@ -42,24 +42,24 @@ ImageList::~ImageList() {
 }
 
 void ImageList::parse(const char* file, const char* directory) {
-	ifstream fin(file);
-	if(!fin) {
-		cerr << "[ImageList::parse] Unable to open file " << file << endl;
-		exit(1);
-	} else {
-		cerr << "[ImageList::parse] Successfully opened file " << file << endl;
-	}
-	
-	for(int i = 0; i < m_num_images; i++) {
-		fin >> m_filenames[i];
-		if(m_filenames[i][0] == '.' && m_filenames[i][1] == '/')
-			m_filenames[i] = string(directory) + "/" + m_filenames[i];
-		
-		string image_args;
-		getline(fin, image_args);
-	}
+    ifstream fin(file);
+    if(!fin) {
+        cerr << "[ImageList::parse] Unable to open file " << file << endl;
+        exit(1);
+    } else {
+        cerr << "[ImageList::parse] Successfully opened file " << file << endl;
+    }
+    
+    for(int i = 0; i < m_num_images; i++) {
+        fin >> m_filenames[i];
+        if(m_filenames[i][0] == '.' && m_filenames[i][1] == '/')
+            m_filenames[i] = string(directory) + "/" + m_filenames[i];
+        
+        string image_args;
+        getline(fin, image_args);
+    }
 }
 
 const QImage ImageList::loadImage(int index) const {
-	return QImage(m_filenames[index].c_str());
+    return QImage(m_filenames[index].c_str());
 }
