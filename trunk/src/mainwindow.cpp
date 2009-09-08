@@ -44,6 +44,9 @@ void MainWindow::createActions() {
     connect(m_exitAct, SIGNAL(triggered()), qApp, SLOT(closeAllWindows()));
     
     m_transmode_group = new QActionGroup(this);
+    m_transmode_none = new QAction(tr("Do&n't display images"), this);
+    m_transmode_none->setCheckable(true);
+    m_transmode_group->addAction(m_transmode_none);
     m_transmode_0 = new QAction(tr("&Simple transitions"), this);
     m_transmode_0->setCheckable(true);
     m_transmode_group->addAction(m_transmode_0);
@@ -95,7 +98,9 @@ void MainWindow::openImageDirectory() {
 }
 
 void MainWindow::setTransMode(QAction* act) {
-    if(act == m_transmode_0)
+    if(act == m_transmode_none)
+        m_glwidget->setTransMode(-1);
+    else if(act == m_transmode_0)
         m_glwidget->setTransMode(0);
     else if(act == m_transmode_1)
         m_glwidget->setTransMode(1);

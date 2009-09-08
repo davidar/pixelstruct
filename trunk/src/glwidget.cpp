@@ -53,6 +53,7 @@ void GLWidget::setTransMode(int transmode) {
             0.5*m_cur_image.width/c.focal_length(),
             0.5*m_cur_image.height/c.focal_length());
     }
+    updateGL();
 }
 
 void GLWidget::initializeGL() {
@@ -160,16 +161,11 @@ void GLWidget::paintGL() {
     
     glCallList(m_pointcloud);
     
-    if(m_prev_image.camera > -1 && m_prev_image.opacity > 0.01) {
-        cerr << "[GLWidget::paintGL] Painting previous image with "
-             << int(100*m_prev_image.opacity) << "% opacity" << endl;
-        paintImage(m_prev_image);
-    }
-    
-    if(m_cur_image.camera > -1 && m_cur_image.opacity > 0.01) {
-        cerr << "[GLWidget::paintGL] Painting current image with "
-             << int(100*m_cur_image.opacity) << "% opacity" << endl;
-        paintImage(m_cur_image);
+    if(m_transmode != -1) {
+        if(m_prev_image.camera > -1 && m_prev_image.opacity > 0.01)
+            paintImage(m_prev_image);
+        if(m_cur_image.camera > -1 && m_cur_image.opacity > 0.01)
+            paintImage(m_cur_image);
     }
 }
 
@@ -186,11 +182,11 @@ void GLWidget::resizeGL (int width, int height) {
     
     glMatrixMode(GL_MODELVIEW);
     
-    cerr << "[GLWidget::resizeGL] end" << endl;
+    //cerr << "[GLWidget::resizeGL] end" << endl;
 }
 
 void GLWidget::keyPressEvent (QKeyEvent* event) {
-    cerr << "[GLWidget::keyPressEvent] begin" << endl;
+    //cerr << "[GLWidget::keyPressEvent] begin" << endl;
     
     switch (event->key()) {
         case Qt::Key_Right:
@@ -209,7 +205,7 @@ void GLWidget::keyPressEvent (QKeyEvent* event) {
             gotoNextCamera(); break;
     }
     
-    cerr << "[GLWidget::keyPressEvent] end" << endl;
+    //cerr << "[GLWidget::keyPressEvent] end" << endl;
 }
 
 void GLWidget::keyReleaseEvent (QKeyEvent* event) {}
@@ -221,10 +217,10 @@ void GLWidget::mouseMoveEvent (QMouseEvent* event) {}
 void GLWidget::mouseReleaseEvent (QMouseEvent* event) {}
 
 void GLWidget::focusInEvent(QFocusEvent* event) {
-    cerr << "[GLWidget::focusInEvent] begin" << endl;
+    //cerr << "[GLWidget::focusInEvent] begin" << endl;
     if(m_cur_image.camera == -1)
         gotoNextCamera();
-    cerr << "[GLWidget::focusInEvent] end" << endl;
+    //cerr << "[GLWidget::focusInEvent] end" << endl;
 }
 
 void GLWidget::focusOutEvent(QFocusEvent* event) {}
@@ -237,7 +233,7 @@ void GLWidget::gotoCamera(int target_camera) {
                        : m_parser->cameras()[m_cur_image.camera];
     const Camera& c2 = m_parser->cameras()[target_camera];
     
-    cerr << "[GLWidget::gotoCamera] Setting current camera to target" << endl;
+    //cerr << "[GLWidget::gotoCamera] Setting current camera to target" << endl;
     glDeleteTextures(1, &(m_prev_image.texture));
     m_prev_image = m_cur_image;
     m_cur_image.camera = target_camera;
@@ -275,7 +271,7 @@ void GLWidget::gotoCamera(int target_camera) {
         updateGL();
     }
     
-    cerr << "[GLWidget::gotoCamera] end" << endl;
+    //cerr << "[GLWidget::gotoCamera] end" << endl;
 }
 
 void GLWidget::gotoNextCamera() {
@@ -287,7 +283,7 @@ void GLWidget::gotoNextCamera() {
     while(m_parser->cameras()[target_camera].focal_length() == 0.0)
         target_camera++;
     gotoCamera(target_camera);
-    cerr << "[GLWidget::gotoNextCamera] end" << endl;
+    //cerr << "[GLWidget::gotoNextCamera] end" << endl;
 }
 
 void GLWidget::gotoDirection(int target_direction) {
@@ -336,7 +332,7 @@ void GLWidget::gotoDirection(int target_direction) {
     
     if(closest_camera >= 0) gotoCamera(closest_camera);
     
-    cerr << "[GLWidget::gotoDirection] end" << endl;
+    //cerr << "[GLWidget::gotoDirection] end" << endl;
 }
 
 void GLWidget::reloadTexture() {
