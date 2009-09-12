@@ -77,8 +77,8 @@ void GLWidget::initializeGL() {
 
 void GLWidget::paintImageTriangulation(const GLWImage& image) {
     const Camera& c = m_parser->cameras()[image.camera];
-    double xrange = image.width/c.focal_length(), yrange =
-        image.height/c.focal_length();
+    double xrange = image.width/c.focal_length();
+    double yrange = image.height/c.focal_length();
     glBegin(GL_TRIANGLES);
     for(Triangulation::face_iterator f  = image.triangulation.faces_begin();
         f != image.triangulation.faces_end(); f++) {
@@ -98,8 +98,8 @@ void GLWidget::paintImageCommonPlane(const GLWImage& image) {
     const Camera& c = m_parser->cameras()[image.camera];
     // transform common plane to local coords
     Plane local_plane = m_common_plane.transform(c.matrix_w2l());
-    double maxx = 0.5*image.width/c.focal_length(), maxy =
-        0.5*image.height/c.focal_length();
+    double maxx = 0.5*image.width/c.focal_length();
+    double maxy = 0.5*image.height/c.focal_length();
     double d0 = local_plane.distance(Point(-maxx,-maxy,-1.0));
     double d1 = local_plane.distance(Point(+maxx,-maxy,-1.0));
     double d2 = local_plane.distance(Point(+maxx,+maxy,-1.0));
@@ -123,8 +123,8 @@ void GLWidget::paintImageCommonPlane(const GLWImage& image) {
 
 void GLWidget::paintImageSimple(const GLWImage& image) {
     const Camera& c = m_parser->cameras()[image.camera];
-    double maxx = 0.5*image.width/c.focal_length(), maxy =
-        0.5*image.height/c.focal_length();
+    double maxx = 0.5*image.width/c.focal_length();
+    double maxy = 0.5*image.height/c.focal_length();
     glBegin(GL_QUADS);
         glTexCoord2d(0.0,0.0); glVertex3d(-maxx,-maxy,-1.0);
         glTexCoord2d(1.0,0.0); glVertex3d(+maxx,-maxy,-1.0);
@@ -178,7 +178,7 @@ void GLWidget::resizeGL (int width, int height) {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glViewport(0, 0, width, height); // entire window
-    gluPerspective(60.0, float(width) / height, 0.001, 1000.0);
+    gluPerspective(60.0, (double)width/height, 1e-20, 1e5);
     
     glMatrixMode(GL_MODELVIEW);
     
@@ -336,10 +336,10 @@ void GLWidget::gotoDirection(int target_direction) {
 }
 
 void GLWidget::reloadTexture() {
-    const QImage image = convertToGLFormat(
-        m_imagelist->loadImage(m_cur_image.camera));
+    QImage image = m_imagelist->loadImage(m_cur_image.camera);
     m_cur_image.width = image.width();
     m_cur_image.height = image.height();
+    image = convertToGLFormat(image.scaled(1000,1000,Qt::KeepAspectRatio));
     glGenTextures(1, &(m_cur_image.texture));
     glBindTexture(GL_TEXTURE_2D, m_cur_image.texture);
     glTexImage2D(GL_TEXTURE_2D, 0, 3, image.width(), image.height(),

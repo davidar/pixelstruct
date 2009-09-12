@@ -52,7 +52,7 @@ void ImageList::parse(const char* file, const char* directory) {
     
     for(int i = 0; i < m_num_images; i++) {
         fin >> m_filenames[i];
-        if(m_filenames[i][0] == '.' && m_filenames[i][1] == '/')
+        if(m_filenames[i][0] != '/') // relative path
             m_filenames[i] = string(directory) + "/" + m_filenames[i];
         
         string image_args;

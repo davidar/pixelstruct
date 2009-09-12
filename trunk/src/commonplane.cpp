@@ -68,7 +68,7 @@ void CommonPlane::ransac(const vector<CGAL_Point>& cgal_points) {
     const int num_points = cgal_points.size();
     
     const unsigned int MIN_POINTS = 3;
-    const int MAX_ITERATIONS = 2000;
+    const int MAX_ITERATIONS = 10000/num_points;
     const double ERROR_THRESHOLD = 0.1;
     const unsigned int REQD_POINTS = 0.2*num_points;
     
