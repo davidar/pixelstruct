@@ -31,6 +31,8 @@ class MainWindow : public QMainWindow {
     MainWindow();
     ~MainWindow();
     
+    void openImageDirectory(const QString& image_directory);
+    
     QSize minimumSizeHint() const {return QSize(50, 50);}
     QSize sizeHint() const {return QSize(800, 600);}
     
@@ -39,7 +41,7 @@ class MainWindow : public QMainWindow {
     void createMenus();
     
     protected Q_SLOTS:
-    void openImageDirectory();
+    void openImageDirectoryDialog();
     void setTransMode(QAction*);
     void about();
     
