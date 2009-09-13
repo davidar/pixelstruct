@@ -39,7 +39,7 @@ class CommonPlane : public Plane {
     
     protected:
     void best_fit_plane(const std::vector<CGAL_Point>&);
-    void ransac(const std::vector<CGAL_Point>&);
+    void ransac(std::vector<CGAL_Point>);
     
     private:
     double m_fitting_quality;
