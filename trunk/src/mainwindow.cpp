@@ -29,15 +29,33 @@ MainWindow::MainWindow()
     createMenus();
     
     m_transmode_2->setChecked(true);
+    
+    if(qApp->arguments().size() > 1)
+        openImageDirectory(qApp->arguments().at(1));
 }
 
 MainWindow::~MainWindow() {
 }
 
+void MainWindow::openImageDirectory(const QString& image_directory) {
+    if(m_bundleparser != 0) delete m_bundleparser;
+    if(m_imagelist != 0) delete m_imagelist;
+    
+    m_bundleparser = new BundleParser(image_directory + "/bundle/bundle.out");
+    m_imagelist = new ImageList(image_directory + "/list.txt", image_directory,
+                                m_bundleparser->num_cameras());
+    
+    m_glwidget = new GLWidget(m_bundleparser, m_imagelist, this);
+    setCentralWidget(m_glwidget);
+    m_glwidget->setFocus();
+    setTransMode(m_transmode_group->checkedAction());
+}
+
 void MainWindow::createActions() {
     m_openAct = new QAction(tr("&Open image directory"), this);
     m_openAct->setShortcut(tr("Ctrl+O"));
-    connect(m_openAct, SIGNAL(triggered()), this, SLOT(openImageDirectory()));
+    connect(m_openAct, SIGNAL(triggered()),
+            this, SLOT(openImageDirectoryDialog()));
     
     m_exitAct = new QAction(tr("&Quit"), this);
     m_exitAct->setShortcut(Qt::Key_Escape);
@@ -79,22 +97,11 @@ void MainWindow::createMenus() {
     helpMenu->addAction(m_aboutQtAct);
 }
 
-void MainWindow::openImageDirectory() {
+void MainWindow::openImageDirectoryDialog() {
     QString image_directory = QFileDialog::getExistingDirectory(this,
         tr("Select image directory"), "", QFileDialog::ShowDirsOnly);
     if(image_directory.isEmpty()) return;
-    
-    if(m_bundleparser != 0) delete m_bundleparser;
-    if(m_imagelist != 0) delete m_imagelist;
-    
-    m_bundleparser = new BundleParser(image_directory + "/bundle/bundle.out");
-    m_imagelist = new ImageList(image_directory + "/list.txt", image_directory,
-                                m_bundleparser->num_cameras());
-    
-    m_glwidget = new GLWidget(m_bundleparser, m_imagelist, this);
-    setCentralWidget(m_glwidget);
-    m_glwidget->setFocus();
-    setTransMode(m_transmode_group->checkedAction());
+    openImageDirectory(image_directory);
 }
 
 void MainWindow::setTransMode(QAction* act) {
