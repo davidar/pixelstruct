@@ -24,7 +24,10 @@ using std::vector;
 using std::cerr;
 using std::endl;
 
+const unsigned int MIN_POINTS = 3;
 const unsigned int MAX_POINTS = 300;
+const int MAX_ITERATIONS = 5000;
+const double ERROR_THRESHOLD = 0.1;
 
 CommonPlane::CommonPlane() {
 }
@@ -70,17 +73,14 @@ void CommonPlane::ransac(vector<CGAL_Point> cgal_points) {
     srand(time(NULL));
     
     const unsigned int num_points = cgal_points.size();
-    if(num_points > MAX_POINTS)
+    if(num_points <= MIN_POINTS)
+        return;
+    else if(num_points > MAX_POINTS)
         cgal_points.resize(MAX_POINTS);
     
-    const unsigned int MIN_POINTS = 3;
-    const int MAX_ITERATIONS = 1000;
-    const double ERROR_THRESHOLD = 0.1;
     const unsigned int REQD_POINTS = 0.2*num_points;
     
     double m_fitting_quality = 0.0;
-    
-    if(num_points <= MIN_POINTS) return;
     
     for(int i = 0; i < MAX_ITERATIONS; i++) {
         //if(i % 100 == 0 && i > 0)
