@@ -19,17 +19,20 @@ using std::vector;
 using std::cerr;
 using std::endl;
 
+const unsigned int MAX_POINTS = 300;
+
 Triangulation::Triangulation() {
 }
 
 Triangulation::Triangulation(const Camera& c, const VisiblePoint* points) {
-    for(vector<int>::const_iterator i = c.visible_points().begin();
-        i != c.visible_points().end(); i++) {
+    vector<int> visible_points = c.visible_points();
+    if(visible_points.size() > MAX_POINTS)
+        visible_points.resize(MAX_POINTS);
+    for(vector<int>::const_iterator i = visible_points.begin();
+        i != visible_points.end(); i++) {
         const Point& p = c.point_w2l(points[*i]);
-        const double x = p.x();
-        const double y = p.y();
-        const double z = p.z();
-        insert_point(x/z, y/z, z); // divide by z to correct for perspective
+        // divide by z to correct for perspective
+        insert_point(p.x()/p.z(), p.y()/p.z(), p.z());
     }
 }
 

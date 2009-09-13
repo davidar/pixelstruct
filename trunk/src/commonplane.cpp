@@ -21,6 +21,10 @@
 #include <algorithm>
 
 using std::vector;
+using std::cerr;
+using std::endl;
+
+const unsigned int MAX_POINTS = 300;
 
 CommonPlane::CommonPlane() {
 }
@@ -62,19 +66,26 @@ void CommonPlane::best_fit_plane(const vector<CGAL_Point>& cgal_points) {
     m_a = plane.a(); m_b = plane.b(); m_c = plane.c(); m_d = -plane.d();
 }
 
-void CommonPlane::ransac(const vector<CGAL_Point>& cgal_points) {
+void CommonPlane::ransac(vector<CGAL_Point> cgal_points) {
     srand(time(NULL));
     
-    const int num_points = cgal_points.size();
+    const unsigned int num_points = cgal_points.size();
+    if(num_points > MAX_POINTS)
+        cgal_points.resize(MAX_POINTS);
     
     const unsigned int MIN_POINTS = 3;
-    const int MAX_ITERATIONS = 10000/num_points;
+    const int MAX_ITERATIONS = 1000;
     const double ERROR_THRESHOLD = 0.1;
     const unsigned int REQD_POINTS = 0.2*num_points;
     
     double m_fitting_quality = 0.0;
     
+    if(num_points <= MIN_POINTS) return;
+    
     for(int i = 0; i < MAX_ITERATIONS; i++) {
+        //if(i % 100 == 0 && i > 0)
+        //    cerr << i << " iterations" << endl;
+        
         // MIN_POINTS random elements from cgal_points
         vector<CGAL_Point> maybe_inliers;
         while(maybe_inliers.size() < MIN_POINTS) {
