@@ -63,6 +63,8 @@ class GLWidget : public QGLWidget {
     void reloadTexture();
     
     private:
+    void handleGLError(int);
+    
     GLuint m_pointcloud;
     BundleParser* m_parser;
     ImageList* m_imagelist;
