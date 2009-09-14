@@ -73,6 +73,8 @@ void GLWidget::initializeGL() {
         }
     glEnd();
     glEndList();
+    
+    handleGLError(__LINE__);
 }
 
 void GLWidget::paintImageTriangulation(const GLWImage& image) {
@@ -161,12 +163,16 @@ void GLWidget::paintGL() {
     
     glCallList(m_pointcloud);
     
+    handleGLError(__LINE__);
+    
     if(m_transmode != -1) {
         if(m_prev_image.camera > -1 && m_prev_image.opacity > 0.01)
             paintImage(m_prev_image);
         if(m_cur_image.camera > -1 && m_cur_image.opacity > 0.01)
             paintImage(m_cur_image);
     }
+    
+    handleGLError(__LINE__);
 }
 
 void GLWidget::resizeGL (int width, int height) {
@@ -339,13 +345,24 @@ void GLWidget::reloadTexture() {
     QImage image = m_imagelist->loadImage(m_cur_image.camera);
     m_cur_image.width = image.width();
     m_cur_image.height = image.height();
-    image = convertToGLFormat(image.scaled(1000,1000,Qt::KeepAspectRatio));
+    GLint texSize; glGetIntegerv(GL_MAX_TEXTURE_SIZE, &texSize);
+    image = image.scaled(texSize, texSize, Qt::KeepAspectRatio);
+    image = convertToGLFormat(image);
     glGenTextures(1, &(m_cur_image.texture));
     glBindTexture(GL_TEXTURE_2D, m_cur_image.texture);
     glTexImage2D(GL_TEXTURE_2D, 0, 3, image.width(), image.height(),
                  0, GL_RGBA, GL_UNSIGNED_BYTE, image.bits());
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    
+    handleGLError(__LINE__);
+}
+
+void GLWidget::handleGLError(int line) {
+    GLenum errCode = glGetError();
+    if(errCode != GL_NO_ERROR)
+        cerr << "OpenGL Error (line " << line << "): "
+             << errCode << ": " << gluErrorString(errCode) << endl;
 }
 
 #include "glwidget.moc"
