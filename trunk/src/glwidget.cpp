@@ -59,11 +59,10 @@ void GLWidget::setTransMode(int transmode) {
 void GLWidget::initializeGL() {
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
+    glDisable(GL_LIGHTING);
     
     m_pointcloud = glGenLists(1);
-    
     glLoadIdentity();
-    
     glNewList(m_pointcloud, GL_COMPILE);
     glBegin(GL_POINTS);
         for(int i = 0; i < m_parser->num_points(); i++) {
@@ -73,6 +72,9 @@ void GLWidget::initializeGL() {
         }
     glEnd();
     glEndList();
+    
+    glGetIntegerv(GL_MAX_TEXTURE_SIZE, &texSize);
+    cerr << "GL_MAX_TEXTURE_SIZE = " << texSize << endl;
     
     handleGLError(__LINE__);
 }
@@ -232,15 +234,16 @@ void GLWidget::focusInEvent(QFocusEvent* event) {
 void GLWidget::focusOutEvent(QFocusEvent* event) {}
 
 void GLWidget::gotoCamera(int target_camera) {
-    cerr << "[GLWidget::gotoCamera] Moving to camera " << target_camera << endl;
+    cerr << "[GLWidget::gotoCamera] Moving to camera "
+         << target_camera << endl;
     
     const Camera& c1 = m_cur_image.camera < 0
                        ? Camera::Identity
                        : m_parser->cameras()[m_cur_image.camera];
     const Camera& c2 = m_parser->cameras()[target_camera];
     
-    //cerr << "[GLWidget::gotoCamera] Setting current camera to target" << endl;
-    glDeleteTextures(1, &(m_prev_image.texture));
+    //glDeleteTextures(1, &(m_prev_image.texture));
+    deleteTexture(m_prev_image.texture);
     m_prev_image = m_cur_image;
     m_cur_image.camera = target_camera;
     reloadTexture();
@@ -345,13 +348,13 @@ void GLWidget::reloadTexture() {
     QImage image = m_imagelist->loadImage(m_cur_image.camera);
     m_cur_image.width = image.width();
     m_cur_image.height = image.height();
-    GLint texSize; glGetIntegerv(GL_MAX_TEXTURE_SIZE, &texSize);
-    image = image.scaled(texSize, texSize, Qt::KeepAspectRatio);
-    image = convertToGLFormat(image);
-    glGenTextures(1, &(m_cur_image.texture));
-    glBindTexture(GL_TEXTURE_2D, m_cur_image.texture);
-    glTexImage2D(GL_TEXTURE_2D, 0, 3, image.width(), image.height(),
-                 0, GL_RGBA, GL_UNSIGNED_BYTE, image.bits());
+    image = image.scaled(texSize, texSize);
+    //image = convertToGLFormat(image);
+    //glGenTextures(1, &(m_cur_image.texture));
+    //glBindTexture(GL_TEXTURE_2D, m_cur_image.texture);
+    //glTexImage2D(GL_TEXTURE_2D, 0, 3, image.width(), image.height(),
+    //             0, GL_RGBA, GL_UNSIGNED_BYTE, image.bits());
+    m_cur_image.texture = bindTexture(image);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     

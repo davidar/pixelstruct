@@ -72,6 +72,7 @@ class GLWidget : public QGLWidget {
     GLWImage m_prev_image;
     CommonPlane m_common_plane;
     int m_transmode;
+    GLint texSize;
 };
 
 #endif

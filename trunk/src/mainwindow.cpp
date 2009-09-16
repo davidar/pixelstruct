@@ -21,6 +21,9 @@
 #include <QMenuBar>
 #include <QMessageBox>
 
+using std::cerr;
+using std::endl;
+
 MainWindow::MainWindow()
     : m_bundleparser(0), m_imagelist(0) {
     setWindowTitle(tr("PixelStruct"));
@@ -38,6 +41,9 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::openImageDirectory(const QString& image_directory) {
+    cerr << "[MainWindow::openImageDirectory] opening "
+         << image_directory.toStdString() << endl;
+    
     if(m_bundleparser != 0) delete m_bundleparser;
     if(m_imagelist != 0) delete m_imagelist;
     
