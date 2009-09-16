@@ -33,9 +33,10 @@ pre-processed dataset, you have two options:
 
 To view a processed dataset, launch PixelStruct as described above, and go to
 "File>Open image directory". Navigate into the image directory you ran Bundler
-on, and hit "Choose". The 3D point cloud will be loaded into the window, and
-once the viewer has focus (you may have to click on it for this), the camera
-will focus on the first image.
+on, and hit "Choose"/"Open". Alternatively you can specify the image directory
+as a command-line argument when launching PixelStruct. The 3D point cloud will
+be loaded into the window, and once the viewer has focus (you may have to click
+on it for this), the camera will focus on the first image.
 
 You can now hit your Return key to move to the next image, or use your arrow
 keys to move to another image in the chosen direction. Pressing Page Up and
