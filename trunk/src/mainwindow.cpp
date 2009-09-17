@@ -53,8 +53,9 @@ void MainWindow::openImageDirectory(const QString& image_directory) {
     
     m_glwidget = new GLWidget(m_bundleparser, m_imagelist, this);
     setCentralWidget(m_glwidget);
-    m_glwidget->setFocus();
     setTransMode(m_transmode_group->checkedAction());
+    m_glwidget->show();
+    m_glwidget->setFocus();
 }
 
 void MainWindow::createActions() {
