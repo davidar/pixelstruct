@@ -123,7 +123,7 @@ void MainWindow::setTransMode(QAction* act) {
 }
 
 void MainWindow::about() {
-    QMessageBox::about(this, "PixelStruct 0.1",
+    QMessageBox::about(this, "PixelStruct 0.2",
     "\nCopyright (c) 2009 David Roberts <d@vidr.cc>\n\n"
     "This program is free software; you can redistribute it and/or modify\n"
     "it under the terms of the GNU General Public License as published by\n"

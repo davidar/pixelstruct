@@ -10,12 +10,13 @@ PixelStruct requires the following libraries:
  - OpenGL
  - CGAL
  
-Once you have installed these, compile the program with:
-  mkdir build/ && cd build/ && cmake .. && make && cd ..
+Once you have installed these, compile the program by running `make` in the
+project root directory.
 
-This will create a binary called 'pixelstruct' in build/src/, which you can
-either copy into your PATH, or run directly with:
-  ./build/src/pixelstruct
+This will create a binary called 'pixelstruct' in the current directory.
+You can either copy this executable into your PATH for system-wide access, or
+just run it immediately by either calling `./pixelstruct` in a terminal or by
+opening it with your file browser.
 
 USAGE
 PixelStruct requires Bundler, which can be downloaded from [2]. First, you need
