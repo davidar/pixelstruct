@@ -6,10 +6,15 @@ Photosynth[3].
 
 HOW TO COMPILE
 PixelStruct requires the following libraries:
- - Qt4
- - OpenGL
+ - Qt4 (with OpenGL support)
  - CGAL
- 
+
+You will also need to install CMake in order to build PixelStruct.
+
+All of the above can be installed in Ubuntu (and likely other Debian-based
+distributions) by running
+    sudo aptitude install libqt4-dev libcgal-dev cmake
+
 Once you have installed these, compile the program by running `make` in the
 project root directory.
 
