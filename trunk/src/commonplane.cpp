@@ -65,7 +65,11 @@ void CommonPlane::best_fit_plane(const vector<CGAL_Point>& cgal_points) {
     CGAL::Cartesian<double>::Plane_3 plane;
     CGAL_Point centroid;
     m_fitting_quality = linear_least_squares_fitting_3(
-        cgal_points.begin(), cgal_points.end(), plane, centroid);
+        cgal_points.begin(), cgal_points.end(), plane, centroid
+#if CGAL_VERSION_NR >= CGAL_VERSION_NUMBER(3,4,0)
+        , CGAL::Dimension_tag<0>()
+#endif
+    );
     m_a = plane.a(); m_b = plane.b(); m_c = plane.c(); m_d = -plane.d();
 }
 
