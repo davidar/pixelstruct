@@ -101,17 +101,17 @@ void BundleParser::parse(const char* file) {
         int num_views;
         fin >> num_views;
         
+        VisiblePoint point(Point(pos_x, pos_y, pos_z),
+                           QColor(col_r, col_g, col_b));
+        m_points[i] = point;
+        
         for(int j = 0; j < num_views; j++) {
             int camera, key;
             float px, py;
             fin >> camera >> key >> px >> py;
             // TODO store this information somewhere
-            m_cameras[camera].add_visible_point(i);
+            m_cameras[camera].add_visible_point(point);
         }
-        
-        VisiblePoint point(Point(pos_x, pos_y, pos_z),
-                           QColor(col_r, col_g, col_b));
-        m_points[i] = point;
     }
     
     cerr << "[BundleParser::parse] Finished loading points" << endl;

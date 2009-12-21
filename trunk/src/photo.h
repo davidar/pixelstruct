@@ -13,36 +13,30 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef COMMONPLANE_H
-#define COMMONPLANE_H
+#ifndef PHOTO_H
+#define PHOTO_H
 
-#include "plane.h"
+#include <QGLWidget>
 
-#include "camera.h"
-#include "visiblepoint.h"
+#include "triangulation.h"
 
-#include <vector>
-
-#include <CGAL/Cartesian.h>
-#include <CGAL/linear_least_squares_fitting_3.h>
-
-class CommonPlane : public Plane {
+class Photo {
     public:
-    typedef CGAL::Cartesian<double>::Point_3 CGAL_Point;
+    Photo(const int, const int, const Camera *);
     
-    CommonPlane();
-    CommonPlane(const Camera&, const Camera&);
-    CommonPlane(const std::vector<CGAL_Point>&);
-    ~CommonPlane();
+    void paintSimple() const;
+    void paintPlane(const Plane &) const;
+    void paintTriangulation() const;
     
-    double fitting_quality() {return m_fitting_quality;}
+    const Camera *camera() const {return m_camera;}
     
-    protected:
-    void best_fit_plane(const std::vector<CGAL_Point>&);
-    void ransac(std::vector<CGAL_Point>);
+    GLuint texture;
+    double opacity;
     
     private:
-    double m_fitting_quality;
+    const int m_width, m_height;
+    const Camera *m_camera;
+    Triangulation m_triangulation;
 };
 
 #endif

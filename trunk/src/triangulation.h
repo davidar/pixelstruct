@@ -36,7 +36,7 @@ class Triangulation {
         DelaunayTriangulation;
     
     Triangulation();
-    Triangulation(const Camera&, const VisiblePoint*);
+    Triangulation(const Camera &);
     ~Triangulation();
     
     typedef DelaunayTriangulation::Finite_faces_iterator face_iterator;

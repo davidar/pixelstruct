@@ -26,7 +26,7 @@ class Camera {
     Camera(const int, const double, const double, const double, const double*);
     ~Camera();
     
-    void add_visible_point(int);
+    void add_visible_point(Point);
     
     int index() const {return m_index;}
     const double* matrix_w2l() const {return m_matrix_w2l;}
@@ -44,7 +44,7 @@ class Camera {
         return point_transform(p, m_matrix_w2l);}
     Point point_l2w(const Point p) const {
         return point_transform(p, m_matrix_l2w);}
-    const std::vector<int>& visible_points() const {return m_visible_points;}
+    const std::vector<Point> &visible_points() const {return m_visible_points;}
     
     static const Camera Identity;
     
@@ -61,7 +61,7 @@ class Camera {
     // transformation matrix: local coords to world coords
     // (for transforming objects)
     double* m_matrix_l2w;
-    std::vector<int> m_visible_points;
+    std::vector<Point> m_visible_points;
 };
 
 #endif
