@@ -30,6 +30,8 @@
 using std::cerr;
 using std::endl;
 
+#define CAPPED_TEXTURE_SIZE 2048
+
 GLWidget::GLWidget(BundleParser* parser, ImageList* imagelist, QWidget* parent)
     : QGLWidget(parent), m_parser(parser), m_imagelist(imagelist),
       m_transmode(0), m_cur_image(NULL), m_prev_image(NULL) {
@@ -182,7 +184,8 @@ void GLWidget::gotoCamera(int target_camera) {
     
     QImage image = m_imagelist->loadImage(target_camera);
     m_cur_image = new Photo(image.width(), image.height(), &c2);
-    image = image.scaled(texSize, texSize);
+    int size = texSize < CAPPED_TEXTURE_SIZE ? texSize : CAPPED_TEXTURE_SIZE;
+    image = image.scaled(size, size);
     //image = convertToGLFormat(image);
     //glGenTextures(1, &(m_cur_image.texture));
     //glBindTexture(GL_TEXTURE_2D, m_cur_image.texture);
