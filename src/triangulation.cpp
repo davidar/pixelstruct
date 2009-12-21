@@ -24,13 +24,13 @@ const unsigned int MAX_POINTS = 300;
 Triangulation::Triangulation() {
 }
 
-Triangulation::Triangulation(const Camera& c, const VisiblePoint* points) {
-    vector<int> visible_points = c.visible_points();
+Triangulation::Triangulation(const Camera &c) {
+    vector<Point> visible_points = c.visible_points();
     if(visible_points.size() > MAX_POINTS)
         visible_points.resize(MAX_POINTS);
-    for(vector<int>::const_iterator i = visible_points.begin();
+    for(vector<Point>::const_iterator i = visible_points.begin();
         i != visible_points.end(); i++) {
-        const Point& p = c.point_w2l(points[*i]);
+        const Point& p = c.point_w2l(*i);
         // divide by z to correct for perspective
         insert_point(p.x()/p.z(), p.y()/p.z(), p.z());
     }

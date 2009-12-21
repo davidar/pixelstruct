@@ -24,6 +24,7 @@ SET(SOURCES
     plane.cpp
     commonplane.cpp
     triangulation.cpp
+    photo.cpp
 )
 SET(HEADERS
     glwidget.h
@@ -36,6 +37,7 @@ SET(HEADERS
     plane.h
     commonplane.h
     triangulation.h
+    photo.h
 )
 
 QT4_AUTOMOC(${SOURCES})

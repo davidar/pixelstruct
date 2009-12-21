@@ -27,9 +27,15 @@ class Point {
     double y() const {return m_y;}
     double z() const {return m_z;}
     double sqdist() const { // square of the distance from the origin
-        return m_x*m_x + m_y*m_y + m_z*m_z;}
+        return m_x*m_x + m_y*m_y + m_z*m_z;
+    }
     double dist() const { // distance from the origin
-        return sqrt(sqdist());}
+        return sqrt(sqdist());
+    }
+    
+    bool operator<(const Point &p) const {
+        return sqdist() < p.sqdist();
+    }
     
     private:
     double m_x, m_y, m_z;
