@@ -11,6 +11,7 @@ INCLUDE_DIRECTORIES(
     # including the following directory causes conflicts with GMP headers
     #${CGAL_INCLUDE_DIR} 
 )
+ADD_DEFINITIONS(${CGAL_DEFINITIONS})
 
 SET(SOURCES
     main.cpp
