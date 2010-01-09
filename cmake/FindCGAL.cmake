@@ -3,9 +3,12 @@
 #   <http://pgrouting.postlbs.org/browser/trunk/cmake/FindCGAL.cmake?rev=53>
 # Find the CGAL includes and client library
 # This module defines
-#  CGAL_INCLUDE_DIR, where to find CGAL.h
-#  CGAL_LIBRARIES, the libraries needed to use CGAL.
-#  CGAL_FOUND, If false, do not try to use CGAL.
+#  CGAL_DEFINITIONS: compiler flags for compiling with CGAL
+#  CGAL_INCLUDE_DIR: where to find CGAL.h
+#  CGAL_LIBRARIES: the libraries needed to use CGAL
+#  CGAL_FOUND: if false, do not try to use CGAL
+
+SET(CGAL_DEFINITIONS -frounding-math)
 
 IF(CGAL_INCLUDE_DIR AND CGAL_LIBRARIES)
     SET(CGAL_FOUND TRUE)
