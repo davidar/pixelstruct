@@ -23,7 +23,8 @@
 #include <vector>
 
 #include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
-#include <CGAL/Triangulation_euclidean_traits_xy_3.h>
+//#include <CGAL/Triangulation_euclidean_traits_xy_3.h>
+#include <CGAL/Projection_traits_xy_3.h>
 #include <CGAL/Delaunay_triangulation_2.h>
 
 class Triangulation {
@@ -31,7 +32,8 @@ class Triangulation {
     typedef CGAL::Exact_predicates_inexact_constructions_kernel::Point_3
         CGAL_Point;
     typedef CGAL::Delaunay_triangulation_2<
-        CGAL::Triangulation_euclidean_traits_xy_3<
+ //       CGAL::Triangulation_euclidean_traits_xy_3<
+        CGAL::Projection_traits_xy_3<
         CGAL::Exact_predicates_inexact_constructions_kernel> >
         DelaunayTriangulation;
     

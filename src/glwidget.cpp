@@ -22,6 +22,7 @@
 #include <unistd.h>
 #include <cfloat>
 #include <cmath>
+#include <GL/glu.h>
 
 #include <QDebug>
 #include <QKeyEvent>
