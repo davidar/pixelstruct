@@ -5,6 +5,10 @@ Bundler[2], which is based on the same research as Microsoft Live Labs
 Photosynth[3].
 
 
+![Alt text](/images/youtube.png "PixelStruct - photosynth viewer alternative")
+https://www.youtube.com/watch?v=VFdNQc3gVkM
+
+
 
 HOW TO COMPILE
 PixelStruct requires the following libraries:
