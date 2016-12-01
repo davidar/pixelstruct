@@ -18,7 +18,7 @@ brew install boost --with-python
 brew install qt5   
 brew install cgal   
    
-export CXXFLAGS=-std=c++11 //maybe not needed anymore?   
+//export CXXFLAGS=-std=c++11  maybe not needed anymore?   
 export CPLUS_INCLUDE_PATH=/usr/include/python2.7   
    
    
@@ -27,8 +27,10 @@ https://github.com/Homebrew/legacy-homebrew/issues/29938
 replace 5.7.0 -> current version of qt!!!   
 sudo ln -s /usr/local/Cellar/qt5/5.7.0/mkspecs /usr/local/mkspecs && ln -s /usr/local/Cellar/qt5/5.7.0/plugins /usr/local/plugins   
 
-
-
+Generate Xcode Project   
+qmake -spec macx-xcode pixelstruct.pro    
+   
+   
 You will also need to install CMake in order to build PixelStruct.
 
 All of the above can be installed in Ubuntu (and likely other Debian-based
