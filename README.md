@@ -20,19 +20,37 @@ OSX
 -------------------------------   
 brew install boost --with-python   
 brew install qt5   
-brew install cgal   
+// brew install cgal   // N.B. doesn't seem to link cgal_qt5 !?? nor does macports - use git + cmake below 
    
-//export CXXFLAGS=-std=c++11  maybe not needed anymore?   
+   
+INSTALL GCAL   
+https://github.com/johndpope/cgal/blob/master/INSTALL.md   
+eg.
+git clone https://github.com/CGAL/cgal.git /path/to/cgal.git
+cd /path/to/cgal.git
+mkdir -p build/debug
+cd build/debug
+cmake -DCMAKE_BUILD_TYPE=Debug ../..
+make install
+
+
+cd ..
+clone this repo
+Generate Xcode Project   
+qmake -spec macx-xcode pixelstruct.pro   
+open xcode project
+
+
+Troubleshooting  
+----------------------------------  
+export CXXFLAGS=-std=c++11  maybe not needed anymore?   
 export CPLUS_INCLUDE_PATH=/usr/include/python2.7   
-   
-   
-Troubleshooting   
+
 https://github.com/Homebrew/legacy-homebrew/issues/29938   
 replace 5.7.0 -> current version of qt!!!   
 sudo ln -s /usr/local/Cellar/qt5/5.7.0/mkspecs /usr/local/mkspecs && ln -s /usr/local/Cellar/qt5/5.7.0/plugins /usr/local/plugins   
 
-Generate Xcode Project   
-qmake -spec macx-xcode pixelstruct.pro    
+ 
    
    
 You will also need to install CMake in order to build PixelStruct.

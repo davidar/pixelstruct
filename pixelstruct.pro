@@ -1,4 +1,4 @@
-QT       += core gui
+QT += core gui
 
 QMAKE_LFLAGS += -F /System/Library/Frameworks -F /System/Library/Frameworks/IOKit.framework -F /System/Library/Frameworks/CoreFoundation.framework
 LIBS += -framework IOKit -framework CoreFoundation
@@ -7,6 +7,9 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = pixelstruct
 TEMPLATE = app
+
+INCLUDEPATH += /usr/local/include
+
 
 SOURCES += ./src/main.cpp \
     ./src/glwidget.cpp \
