@@ -1,0 +1,946 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		7813C25D7A324C8A97DC409A /* pixelstruct_automoc */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 28AD481BBEFD42578A93F40C /* Build configuration list for PBXAggregateTarget "pixelstruct_automoc" */;
+			buildPhases = (
+				399536C8BCE44E1D98DCAD51 /* CMake Rules */,
+			);
+			dependencies = (
+				C34F6519A27C48729091CD08 /* PBXTargetDependency */,
+			);
+			name = pixelstruct_automoc;
+			productName = pixelstruct_automoc;
+		};
+		87F23C5C47EA484089F3CD04 /* ZERO_CHECK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = D9840486607449CFBDAEBD8E /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildPhases = (
+				02EDAAD1C3D1442B8767CA95 /* CMake Rules */,
+			);
+			dependencies = (
+			);
+			name = ZERO_CHECK;
+			productName = ZERO_CHECK;
+		};
+		93AA06E3680C42698917F5C4 /* ALL_BUILD */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 19C74039F19B470BB60EC768 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildPhases = (
+				E8ED380E0D1B44DA9B8B8D29 /* CMake Rules */,
+			);
+			dependencies = (
+				8ADB4226412D4E0CA6670580 /* PBXTargetDependency */,
+				8D8C8B7F25EB44AABB245306 /* PBXTargetDependency */,
+			);
+			name = ALL_BUILD;
+			productName = ALL_BUILD;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		103E9A6C2138410C8386314A /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/main.cpp */ = {isa = PBXBuildFile; fileRef = 86D83EFD115C416CBA29D3CD /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/main.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		2163FF610054403FBD201F6D /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/triangulation.h */ = {isa = PBXBuildFile; fileRef = 28D58477829B4A599C3684E6 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/triangulation.h */; settings = {COMPILER_FLAGS = ""; }; };
+		26B4BC4CC1114BAC9E47186B /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/plane.cpp */ = {isa = PBXBuildFile; fileRef = 407C4FC3011748BCA8AB3C7E /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/plane.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		39135237C5BA4E4AAB99F78F /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 25538E3A82154F28879F834C /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/CMakeLists.txt */; settings = {COMPILER_FLAGS = ""; }; };
+		399F15AFC4944E398B690FCA /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/commonplane.h */ = {isa = PBXBuildFile; fileRef = 7C5806A93F2E4E85B1D7619F /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/commonplane.h */; settings = {COMPILER_FLAGS = ""; }; };
+		50C443CA5C614910B69DFB37 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/point.cpp */ = {isa = PBXBuildFile; fileRef = AF9950C4F2A14390944379AA /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/point.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		595DBB963CB04BF5A6E6789F /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/mainwindow.cpp */ = {isa = PBXBuildFile; fileRef = 57A7D49FEC454E66B7C04B45 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/mainwindow.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		63A5062CA1B245399AA7F280 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/imagelist.h */ = {isa = PBXBuildFile; fileRef = 3509F207BC55486C8A50FA24 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/imagelist.h */; settings = {COMPILER_FLAGS = ""; }; };
+		7AFB2127C99C42599D53A487 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/point.h */ = {isa = PBXBuildFile; fileRef = 981CDFA7213E4A4B9FDD8579 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/point.h */; settings = {COMPILER_FLAGS = ""; }; };
+		8645F4CA61434E6E9223D831 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/triangulation.cpp */ = {isa = PBXBuildFile; fileRef = 5189A5AAEF304613AB2B5373 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/triangulation.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		8D82FE950DFE444EA24B689B /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/photo.cpp */ = {isa = PBXBuildFile; fileRef = 64A2E2169CC34DCAAAD182F9 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/photo.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		924B5DC27A8D444ABAA1B159 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/camera.cpp */ = {isa = PBXBuildFile; fileRef = 98E956A992CD4463861F58E4 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/camera.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		99B06FFD47BE478C82E74BC6 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/visiblepoint.h */ = {isa = PBXBuildFile; fileRef = D8C6233A94C54F3EB5482387 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/visiblepoint.h */; settings = {COMPILER_FLAGS = ""; }; };
+		A04DC5436D8E45349B99B5BF /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/photo.h */ = {isa = PBXBuildFile; fileRef = 662E79A173B1424CBE571EF1 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/photo.h */; settings = {COMPILER_FLAGS = ""; }; };
+		A0D6952A0A7443FEB91240E0 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/camera.h */ = {isa = PBXBuildFile; fileRef = E63CEE1E702A4B92BD523A7C /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/camera.h */; settings = {COMPILER_FLAGS = ""; }; };
+		A2101BDFE7944B8EA1777417 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/mainwindow.h */ = {isa = PBXBuildFile; fileRef = E383066C4E2841CBBFC9F977 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/mainwindow.h */; settings = {COMPILER_FLAGS = ""; }; };
+		A7141EB71E84443C91119874 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/glwidget.h */ = {isa = PBXBuildFile; fileRef = 3E2549D2EEFF481CB728ECAD /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/glwidget.h */; settings = {COMPILER_FLAGS = ""; }; };
+		ADCFE65755954C2C92738730 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/commonplane.cpp */ = {isa = PBXBuildFile; fileRef = B894231E401F4D87B246507D /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/commonplane.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		B072F908B8B74AB2A25BA8EF /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/pixelstruct_automoc.cpp */ = {isa = PBXBuildFile; fileRef = FF31A4ECB42C4622BF52F568 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/pixelstruct_automoc.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		B0B16D3F0E73401E9C01DDE3 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/bundleparser.cpp */ = {isa = PBXBuildFile; fileRef = 590AACC3725F42E68F2B76C9 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/bundleparser.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		B28DCF30C46040F896D3409B /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/plane.h */ = {isa = PBXBuildFile; fileRef = E4A42C00160642D18E5F4796 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/plane.h */; settings = {COMPILER_FLAGS = ""; }; };
+		B7E8A03002C04BB296D92391 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/visiblepoint.cpp */ = {isa = PBXBuildFile; fileRef = 89C4BEDE5E9B4D4EB402D04E /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/visiblepoint.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		FB1A86271D864DD78BA528A5 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/imagelist.cpp */ = {isa = PBXBuildFile; fileRef = 48B5FF4D3C54460EA1D264B9 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/imagelist.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+		FBF8231AA0154597B555E66B /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/bundleparser.h */ = {isa = PBXBuildFile; fileRef = D23AA8674ACD4A6AA81C1F53 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/bundleparser.h */; settings = {COMPILER_FLAGS = ""; }; };
+		FC008038561F4D7FB801F6C3 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/glwidget.cpp */ = {isa = PBXBuildFile; fileRef = 7868545B4BA146659323A12F /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/glwidget.cpp */; settings = {COMPILER_FLAGS = ""; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		485E6EC31FF14CE9BF5C9458 /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		8FC10C6448B7499AB277FC04 /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
+		F77331B7EE5F444BB5168AFD = {
+			isa = PBXBuildStyle;
+		};
+		F95D507845CA473EAE149F2A /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
+		FC3C986DA4F546A38538C004 /* RelWithDebInfo */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = RelWithDebInfo;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXContainerItemProxy section */
+		070BCCFF9D7D4107BDAFFE34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54303237A00D4D39B8AA4C89 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87F23C5C47EA484089F3CD04;
+			remoteInfo = ZERO_CHECK;
+		};
+		2F52EC02469148CDAC96889C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54303237A00D4D39B8AA4C89 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87F23C5C47EA484089F3CD04;
+			remoteInfo = ZERO_CHECK;
+		};
+		CFD12CE0367E442083CD9A0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54303237A00D4D39B8AA4C89 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7813C25D7A324C8A97DC409A;
+			remoteInfo = pixelstruct_automoc;
+		};
+		D4953D2AB1654D93B313802D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54303237A00D4D39B8AA4C89 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C559ADE8BE6C45B5B8C759B5;
+			remoteInfo = pixelstruct;
+		};
+		DBB4D4CB133B4DC2938DA773 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 54303237A00D4D39B8AA4C89 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87F23C5C47EA484089F3CD04;
+			remoteInfo = ZERO_CHECK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		25538E3A82154F28879F834C /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = src/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		28D58477829B4A599C3684E6 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/triangulation.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = triangulation.h; path = src/triangulation.h; sourceTree = SOURCE_ROOT; };
+		2FA73A0D03C74A9FBAF2A774 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = src/CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		3509F207BC55486C8A50FA24 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/imagelist.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = imagelist.h; path = src/imagelist.h; sourceTree = SOURCE_ROOT; };
+		3E2549D2EEFF481CB728ECAD /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/glwidget.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = glwidget.h; path = src/glwidget.h; sourceTree = SOURCE_ROOT; };
+		407C4FC3011748BCA8AB3C7E /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/plane.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = plane.cpp; path = src/plane.cpp; sourceTree = SOURCE_ROOT; };
+		48B5FF4D3C54460EA1D264B9 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/imagelist.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = imagelist.cpp; path = src/imagelist.cpp; sourceTree = SOURCE_ROOT; };
+		4EFCFE4C7429404F90EE17D8 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		5189A5AAEF304613AB2B5373 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/triangulation.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = triangulation.cpp; path = src/triangulation.cpp; sourceTree = SOURCE_ROOT; };
+		57A7D49FEC454E66B7C04B45 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/mainwindow.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = mainwindow.cpp; path = src/mainwindow.cpp; sourceTree = SOURCE_ROOT; };
+		590AACC3725F42E68F2B76C9 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/bundleparser.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = bundleparser.cpp; path = src/bundleparser.cpp; sourceTree = SOURCE_ROOT; };
+		63D805FD14AE4E328D458314 /* pixelstruct */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; path = pixelstruct; sourceTree = BUILT_PRODUCTS_DIR; };
+		64A2E2169CC34DCAAAD182F9 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/photo.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = photo.cpp; path = src/photo.cpp; sourceTree = SOURCE_ROOT; };
+		662E79A173B1424CBE571EF1 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/photo.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = photo.h; path = src/photo.h; sourceTree = SOURCE_ROOT; };
+		7868545B4BA146659323A12F /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/glwidget.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = glwidget.cpp; path = src/glwidget.cpp; sourceTree = SOURCE_ROOT; };
+		7C5806A93F2E4E85B1D7619F /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/commonplane.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = commonplane.h; path = src/commonplane.h; sourceTree = SOURCE_ROOT; };
+		86D83EFD115C416CBA29D3CD /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
+		89C4BEDE5E9B4D4EB402D04E /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/visiblepoint.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = visiblepoint.cpp; path = src/visiblepoint.cpp; sourceTree = SOURCE_ROOT; };
+		981CDFA7213E4A4B9FDD8579 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/point.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = point.h; path = src/point.h; sourceTree = SOURCE_ROOT; };
+		98E956A992CD4463861F58E4 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/camera.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = camera.cpp; path = src/camera.cpp; sourceTree = SOURCE_ROOT; };
+		AF9950C4F2A14390944379AA /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/point.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = point.cpp; path = src/point.cpp; sourceTree = SOURCE_ROOT; };
+		B894231E401F4D87B246507D /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/commonplane.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = commonplane.cpp; path = src/commonplane.cpp; sourceTree = SOURCE_ROOT; };
+		D130E1E33CAB407C9F460ECB /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		D23AA8674ACD4A6AA81C1F53 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/bundleparser.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = bundleparser.h; path = src/bundleparser.h; sourceTree = SOURCE_ROOT; };
+		D8C6233A94C54F3EB5482387 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/visiblepoint.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = visiblepoint.h; path = src/visiblepoint.h; sourceTree = SOURCE_ROOT; };
+		E383066C4E2841CBBFC9F977 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/mainwindow.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = mainwindow.h; path = src/mainwindow.h; sourceTree = SOURCE_ROOT; };
+		E4A42C00160642D18E5F4796 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/plane.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = plane.h; path = src/plane.h; sourceTree = SOURCE_ROOT; };
+		E63CEE1E702A4B92BD523A7C /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/camera.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = camera.h; path = src/camera.h; sourceTree = SOURCE_ROOT; };
+		FF31A4ECB42C4622BF52F568 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/pixelstruct_automoc.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = pixelstruct_automoc.cpp; path = src/pixelstruct_automoc.cpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		039F24ED77D34B80AC23C2EE /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		143E86ED886C4B87A53BD513 /* Source Files */ = {
+			isa = PBXGroup;
+			children = (
+				590AACC3725F42E68F2B76C9 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/bundleparser.cpp */,
+				98E956A992CD4463861F58E4 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/camera.cpp */,
+				B894231E401F4D87B246507D /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/commonplane.cpp */,
+				7868545B4BA146659323A12F /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/glwidget.cpp */,
+				48B5FF4D3C54460EA1D264B9 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/imagelist.cpp */,
+				86D83EFD115C416CBA29D3CD /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/main.cpp */,
+				57A7D49FEC454E66B7C04B45 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/mainwindow.cpp */,
+				64A2E2169CC34DCAAAD182F9 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/photo.cpp */,
+				FF31A4ECB42C4622BF52F568 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/pixelstruct_automoc.cpp */,
+				407C4FC3011748BCA8AB3C7E /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/plane.cpp */,
+				AF9950C4F2A14390944379AA /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/point.cpp */,
+				5189A5AAEF304613AB2B5373 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/triangulation.cpp */,
+				89C4BEDE5E9B4D4EB402D04E /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/visiblepoint.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		2A3BA53078FD41708156419C /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				6F6E1FBCA13148F8B90861A5 /* ALL_BUILD */,
+				473C719381664751AEE93224 /* ZERO_CHECK */,
+				3EF4E2C7D89040C39C3F7F21 /* pixelstruct */,
+				E72EFEF3CEF943378E8882E8 /* pixelstruct_automoc */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		2B11BA76C1974D69A2E885F5 /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+		3EF4E2C7D89040C39C3F7F21 /* pixelstruct */ = {
+			isa = PBXGroup;
+			children = (
+				143E86ED886C4B87A53BD513 /* Source Files */,
+				CA50B22D8DC047C48F6D3E08 /* Header Files */,
+				25538E3A82154F28879F834C /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/CMakeLists.txt */,
+			);
+			name = pixelstruct;
+			sourceTree = "<group>";
+		};
+		473C719381664751AEE93224 /* ZERO_CHECK */ = {
+			isa = PBXGroup;
+			children = (
+				ED1068E5ED584449B07C7A2D /* CMake Rules */,
+				4EFCFE4C7429404F90EE17D8 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/CMakeLists.txt */,
+			);
+			name = ZERO_CHECK;
+			sourceTree = "<group>";
+		};
+		6F6E1FBCA13148F8B90861A5 /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				2B11BA76C1974D69A2E885F5 /* CMake Rules */,
+				D130E1E33CAB407C9F460ECB /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		6FF5ED1490EC48269322149F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63D805FD14AE4E328D458314 /* pixelstruct */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B1D3D9B28ED943228FB087B1 = {
+			isa = PBXGroup;
+			children = (
+				2A3BA53078FD41708156419C /* Sources */,
+				BBC0A82B2EA5402E8FB8093F /* Resources */,
+				6FF5ED1490EC48269322149F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BBC0A82B2EA5402E8FB8093F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		CA50B22D8DC047C48F6D3E08 /* Header Files */ = {
+			isa = PBXGroup;
+			children = (
+				D23AA8674ACD4A6AA81C1F53 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/bundleparser.h */,
+				E63CEE1E702A4B92BD523A7C /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/camera.h */,
+				7C5806A93F2E4E85B1D7619F /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/commonplane.h */,
+				3E2549D2EEFF481CB728ECAD /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/glwidget.h */,
+				3509F207BC55486C8A50FA24 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/imagelist.h */,
+				E383066C4E2841CBBFC9F977 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/mainwindow.h */,
+				662E79A173B1424CBE571EF1 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/photo.h */,
+				E4A42C00160642D18E5F4796 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/plane.h */,
+				981CDFA7213E4A4B9FDD8579 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/point.h */,
+				28D58477829B4A599C3684E6 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/triangulation.h */,
+				D8C6233A94C54F3EB5482387 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/visiblepoint.h */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		E72EFEF3CEF943378E8882E8 /* pixelstruct_automoc */ = {
+			isa = PBXGroup;
+			children = (
+				039F24ED77D34B80AC23C2EE /* CMake Rules */,
+				2FA73A0D03C74A9FBAF2A774 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/CMakeLists.txt */,
+			);
+			name = pixelstruct_automoc;
+			sourceTree = "<group>";
+		};
+		ED1068E5ED584449B07C7A2D /* CMake Rules */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "CMake Rules";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C559ADE8BE6C45B5B8C759B5 /* pixelstruct */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15FCDEBFCE4444E08FDA8C63 /* Build configuration list for PBXNativeTarget "pixelstruct" */;
+			buildPhases = (
+				2CF59F955D7A4F589FCB4B9B /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				648E068EFB504F51B7FB4950 /* PBXTargetDependency */,
+				E2838AFCD4C9422491117911 /* PBXTargetDependency */,
+			);
+			name = pixelstruct;
+			productName = pixelstruct;
+			productReference = 63D805FD14AE4E328D458314 /* pixelstruct */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		54303237A00D4D39B8AA4C89 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0820;
+			};
+			buildConfigurationList = 66BB4E554E014800A15706DC /* Build configuration list for PBXProject "pixelstruct" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				485E6EC31FF14CE9BF5C9458 /* Debug */,
+				8FC10C6448B7499AB277FC04 /* Release */,
+				F95D507845CA473EAE149F2A /* MinSizeRel */,
+				FC3C986DA4F546A38538C004 /* RelWithDebInfo */,
+			);
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 0;
+			mainGroup = B1D3D9B28ED943228FB087B1;
+			projectDirPath = .;
+			projectRoot = "";
+			targets = (
+				93AA06E3680C42698917F5C4 /* ALL_BUILD */,
+				87F23C5C47EA484089F3CD04 /* ZERO_CHECK */,
+				C559ADE8BE6C45B5B8C759B5 /* pixelstruct */,
+				7813C25D7A324C8A97DC409A /* pixelstruct_automoc */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		02EDAAD1C3D1442B8767CA95 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/johndpope/Documents/gitWorkspace/pixelstruct -f /Users/johndpope/Documents/gitWorkspace/pixelstruct/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		399536C8BCE44E1D98DCAD51 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/johndpope/Documents/gitWorkspace/pixelstruct/src -f /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/CMakeScripts/pixelstruct_automoc_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+		6339410D6A5E4BF88D7846A7 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		A27D1209DD5F4A7888F4417D = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		DB2BEAC51F1B4806BAA29721 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		E8ED380E0D1B44DA9B8B8D29 /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/johndpope/Documents/gitWorkspace/pixelstruct -f /Users/johndpope/Documents/gitWorkspace/pixelstruct/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION all";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2CF59F955D7A4F589FCB4B9B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0B16D3F0E73401E9C01DDE3 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/bundleparser.cpp */,
+				924B5DC27A8D444ABAA1B159 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/camera.cpp */,
+				ADCFE65755954C2C92738730 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/commonplane.cpp */,
+				FC008038561F4D7FB801F6C3 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/glwidget.cpp */,
+				FB1A86271D864DD78BA528A5 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/imagelist.cpp */,
+				103E9A6C2138410C8386314A /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/main.cpp */,
+				595DBB963CB04BF5A6E6789F /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/mainwindow.cpp */,
+				8D82FE950DFE444EA24B689B /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/photo.cpp */,
+				B072F908B8B74AB2A25BA8EF /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/pixelstruct_automoc.cpp */,
+				26B4BC4CC1114BAC9E47186B /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/plane.cpp */,
+				50C443CA5C614910B69DFB37 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/point.cpp */,
+				8645F4CA61434E6E9223D831 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/triangulation.cpp */,
+				B7E8A03002C04BB296D92391 /* /Users/johndpope/Documents/gitWorkspace/pixelstruct/src/visiblepoint.cpp */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		648E068EFB504F51B7FB4950 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7813C25D7A324C8A97DC409A /* pixelstruct_automoc */;
+			targetProxy = CFD12CE0367E442083CD9A0A /* PBXContainerItemProxy */;
+		};
+		8ADB4226412D4E0CA6670580 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C559ADE8BE6C45B5B8C759B5 /* pixelstruct */;
+			targetProxy = D4953D2AB1654D93B313802D /* PBXContainerItemProxy */;
+		};
+		8D8C8B7F25EB44AABB245306 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87F23C5C47EA484089F3CD04 /* ZERO_CHECK */;
+			targetProxy = 2F52EC02469148CDAC96889C /* PBXContainerItemProxy */;
+		};
+		C34F6519A27C48729091CD08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87F23C5C47EA484089F3CD04 /* ZERO_CHECK */;
+			targetProxy = DBB4D4CB133B4DC2938DA773 /* PBXContainerItemProxy */;
+		};
+		E2838AFCD4C9422491117911 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87F23C5C47EA484089F3CD04 /* ZERO_CHECK */;
+			targetProxy = 070BCCFF9D7D4107BDAFFE34 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		04873F5F7F97419B8F3FBC45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct/build;
+			};
+			name = Debug;
+		};
+		0B2D1C57DDA54889A6E18EDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		167F384528294D99A151BA9D /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (/usr/local/lib);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",QT_WIDGETS_LIB,QT_GUI_LIB,QT_CORE_LIB);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/johndpope/Documents/gitWorkspace/pixelstruct/src,/usr/local/lib/QtWidgets.framework/Headers,/usr/local/lib/QtGui.framework/Headers,/usr/local/lib/QtCore.framework/Headers,"/usr/local/./mkspecs/macx-clang","/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework/Headers",/usr/local/include);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = " -std=c++11 -Wall        -DNDEBUG   -Wall -O2 -frounding-math";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -framework OpenGL -framework OpenGL /usr/local/lib/libCGAL.dylib /usr/local/lib/libgmp.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = pixelstruct;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct/src;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		2AA97A35B28A4D419F91CDEA /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		2D3FBAD8EB854263987EFE12 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		308B987C4D554DD6A9FF2B5B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (/usr/local/lib);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/johndpope/Documents/gitWorkspace/pixelstruct/src,/usr/local/lib/QtWidgets.framework/Headers,/usr/local/lib/QtGui.framework/Headers,/usr/local/lib/QtCore.framework/Headers,"/usr/local/./mkspecs/macx-clang","/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework/Headers",/usr/local/include);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = pixelstruct_automoc;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct/src;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		31C2F720A18F4C1CA1B1BDD8 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (/usr/local/lib);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/johndpope/Documents/gitWorkspace/pixelstruct/src,/usr/local/lib/QtWidgets.framework/Headers,/usr/local/lib/QtGui.framework/Headers,/usr/local/lib/QtCore.framework/Headers,"/usr/local/./mkspecs/macx-clang","/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework/Headers",/usr/local/include);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = pixelstruct_automoc;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct/src;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		3CEB3BE5152540C0B8904893 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (/usr/local/lib);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",QT_WIDGETS_LIB,QT_GUI_LIB,QT_CORE_LIB);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/johndpope/Documents/gitWorkspace/pixelstruct/src,/usr/local/lib/QtWidgets.framework/Headers,/usr/local/lib/QtGui.framework/Headers,/usr/local/lib/QtCore.framework/Headers,"/usr/local/./mkspecs/macx-clang","/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework/Headers",/usr/local/include);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = " -std=c++11 -Wall     -DNDEBUG   -Wall -O2 -frounding-math";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -framework OpenGL -framework OpenGL /usr/local/lib/libCGAL.dylib /usr/local/lib/libgmp.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = pixelstruct;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct/src;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		6498859E2D3A48FDB423E6D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		7FE615A7CF934F75ACD38AC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		8341658F5FFF4A168E48E62D /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		A18B215CF72244E4AFB55A66 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (/usr/local/lib);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",QT_WIDGETS_LIB,QT_GUI_LIB,QT_CORE_LIB);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/johndpope/Documents/gitWorkspace/pixelstruct/src,/usr/local/lib/QtWidgets.framework/Headers,/usr/local/lib/QtGui.framework/Headers,/usr/local/lib/QtCore.framework/Headers,"/usr/local/./mkspecs/macx-clang","/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework/Headers",/usr/local/include);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = " -std=c++11 -Wall     -DNDEBUG   -Wall -O2 -frounding-math";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -framework OpenGL -framework OpenGL /usr/local/lib/libCGAL.dylib /usr/local/lib/libgmp.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = pixelstruct;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct/src;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		B9787DBD29B54E4BB7B1FB0B /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (/usr/local/lib);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/johndpope/Documents/gitWorkspace/pixelstruct/src,/usr/local/lib/QtWidgets.framework/Headers,/usr/local/lib/QtGui.framework/Headers,/usr/local/lib/QtCore.framework/Headers,"/usr/local/./mkspecs/macx-clang","/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework/Headers",/usr/local/include);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = pixelstruct_automoc;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct/src;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		D0BE2923ADE745F2AAF79937 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct/build;
+			};
+			name = RelWithDebInfo;
+		};
+		D4A4D52EDE2348F891D08324 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct/build;
+			};
+			name = MinSizeRel;
+		};
+		D87C17933B0F46E4BE0AC5E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				EXECUTABLE_PREFIX = "";
+				EXECUTABLE_SUFFIX = "";
+				FRAMEWORK_SEARCH_PATHS = (/usr/local/lib);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'",QT_WIDGETS_LIB,QT_GUI_LIB,QT_CORE_LIB);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/johndpope/Documents/gitWorkspace/pixelstruct/src,/usr/local/lib/QtWidgets.framework/Headers,/usr/local/lib/QtGui.framework/Headers,/usr/local/lib/QtCore.framework/Headers,"/usr/local/./mkspecs/macx-clang","/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework/Headers",/usr/local/include);
+				INSTALL_PATH = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CPLUSPLUSFLAGS = " -std=c++11 -Wall      -Wall -O2 -frounding-math";
+				OTHER_LDFLAGS = " -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -framework OpenGL -framework OpenGL /usr/local/lib/libCGAL.dylib /usr/local/lib/libgmp.dylib";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = pixelstruct;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct/src;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		DB0BB0F507174CF58744EFF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		F2C6C8835A924F82821AC4DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (/usr/local/lib);
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (/Users/johndpope/Documents/gitWorkspace/pixelstruct/src,/usr/local/lib/QtWidgets.framework/Headers,/usr/local/lib/QtGui.framework/Headers,/usr/local/lib/QtCore.framework/Headers,"/usr/local/./mkspecs/macx-clang","/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/OpenGL.framework/Headers",/usr/local/include);
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = pixelstruct_automoc;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct/src;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		F7F08D4E582E49BF8CF75C80 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		FD73C9B840C04F3F97AD7C3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = "/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk";
+				SYMROOT = /Users/johndpope/Documents/gitWorkspace/pixelstruct/build;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		15FCDEBFCE4444E08FDA8C63 /* Build configuration list for PBXNativeTarget "pixelstruct" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D87C17933B0F46E4BE0AC5E7 /* Debug */,
+				3CEB3BE5152540C0B8904893 /* Release */,
+				A18B215CF72244E4AFB55A66 /* MinSizeRel */,
+				167F384528294D99A151BA9D /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		19C74039F19B470BB60EC768 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB0BB0F507174CF58744EFF3 /* Debug */,
+				0B2D1C57DDA54889A6E18EDA /* Release */,
+				2AA97A35B28A4D419F91CDEA /* MinSizeRel */,
+				2D3FBAD8EB854263987EFE12 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		28AD481BBEFD42578A93F40C /* Build configuration list for PBXAggregateTarget "pixelstruct_automoc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2C6C8835A924F82821AC4DD /* Debug */,
+				308B987C4D554DD6A9FF2B5B /* Release */,
+				31C2F720A18F4C1CA1B1BDD8 /* MinSizeRel */,
+				B9787DBD29B54E4BB7B1FB0B /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		66BB4E554E014800A15706DC /* Build configuration list for PBXProject "pixelstruct" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04873F5F7F97419B8F3FBC45 /* Debug */,
+				FD73C9B840C04F3F97AD7C3F /* Release */,
+				D4A4D52EDE2348F891D08324 /* MinSizeRel */,
+				D0BE2923ADE745F2AAF79937 /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D9840486607449CFBDAEBD8E /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6498859E2D3A48FDB423E6D0 /* Debug */,
+				7FE615A7CF934F75ACD38AC4 /* Release */,
+				F7F08D4E582E49BF8CF75C80 /* MinSizeRel */,
+				8341658F5FFF4A168E48E62D /* RelWithDebInfo */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 54303237A00D4D39B8AA4C89 /* Project object */;
+}

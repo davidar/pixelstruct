@@ -1,10 +1,35 @@
-FIND_PACKAGE(Qt4 REQUIRED)
+# Find the QtWidgets library
+
+# Widgets finds its own dependencies (QtGui and QtCore).
+find_package(Qt5Widgets REQUIRED)
+find_package(Qt5Core REQUIRED)
+find_package(Qt5Gui REQUIRED)
+
 FIND_PACKAGE(OpenGL REQUIRED)
 FIND_PACKAGE(CGAL REQUIRED)
 FIND_PACKAGE(GMP REQUIRED)
 SET(QT_USE_QTOPENGL ON)
-INCLUDE(${QT_USE_FILE})
+
+# Find includes in corresponding build directories
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+# Instruct CMake to run moc automatically when needed.
+set(CMAKE_AUTOMOC ON)
+
+include_directories(${Qt5Widgets_INCLUDE_DIRS})
 ADD_DEFINITIONS(${QT_DEFINITIONS} -Wall -O2)
+
+# The Qt5Widgets_INCLUDES also includes the include directories for
+# dependencies QtCore and QtGui
+include_directories(${Qt5Widgets_INCLUDES})
+
+# We need add -DQT_WIDGETS_LIB when using QtWidgets in Qt 5.
+add_definitions(${Qt5Widgets_DEFINITIONS})
+
+# Executables fail to build with Qt 5 in the default configuration
+# without -fPIE. We add that here.
+set(CMAKE_CXX_FLAGS "${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall")
 
 INCLUDE_DIRECTORIES(
     ${CMAKE_CURRENT_BINARY_DIR}
@@ -43,7 +68,6 @@ SET(HEADERS
     photo.h
 )
 
-QT4_AUTOMOC(${SOURCES})
 
 ADD_EXECUTABLE(pixelstruct ${SOURCES} ${HEADERS})
 TARGET_LINK_LIBRARIES(pixelstruct

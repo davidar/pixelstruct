@@ -4,10 +4,22 @@ from photographs. It uses the opensource structure-from-motion system
 Bundler[2], which is based on the same research as Microsoft Live Labs
 Photosynth[3].
 
+
+
 HOW TO COMPILE
 PixelStruct requires the following libraries:
  - Qt4 (with OpenGL support)
  - CGAL
+
+
+OSX
+-------------------------------
+brew install boost --with-python
+brew install qt5
+brew install cgal
+
+export CXXFLAGS=-std=c++11
+
 
 You will also need to install CMake in order to build PixelStruct.
 

@@ -16,7 +16,10 @@
 #ifndef GLWIDGET_H
 #define GLWIDGET_H
 
-#include <QGLWidget>
+
+
+
+#include <QtOpenGL/QGLWidget>
 
 #include "bundleparser.h"
 #include "imagelist.h"
@@ -62,6 +65,8 @@ class GLWidget : public QGLWidget {
     Photo *m_prev_image;
     CommonPlane m_common_plane;
     GLint texSize;
+    
+    
 };
 
 #endif
