@@ -22,21 +22,26 @@ brew install boost --with-python
 brew install qt5   
 // brew install cgal   // N.B. doesn't seem to link cgal_qt5 !?? nor does macports - use git + cmake below 
    
-   
-INSTALL GCAL   
+1.) Clone this repo    
+cd pixelStruct
+
+2.) clone GCAL inside directory
 https://github.com/johndpope/cgal/blob/master/INSTALL.md   
-eg.
 git clone https://github.com/CGAL/cgal.git /path/to/cgal.git
 cd /path/to/cgal.git
 mkdir -p build/debug
 cd build/debug
 cmake -DCMAKE_BUILD_TYPE=Debug ../..
+make
 make install
 
 
-cd ..
-clone this repo
-Generate Xcode Project   
+3)   
+cd ../..   
+cmake -DCGAL_DIR=/cgal .   
+make  // here it's failing with Undefined symbols for architecture x86_64: on CGAL
+
+OPTIONAL / SPIT OUT XCODE PROJECT
 qmake -spec macx-xcode pixelstruct.pro   
 open xcode project
 
