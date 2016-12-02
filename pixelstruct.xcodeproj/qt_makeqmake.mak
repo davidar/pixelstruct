@@ -167,6 +167,7 @@ pixelstruct.xcodeproj/project.pbxproj: pixelstruct.pro /usr/local/Cellar/qt5/5.7
 		/usr/local/Cellar/qt5/5.7.0/mkspecs/features/yacc.prf \
 		/usr/local/Cellar/qt5/5.7.0/mkspecs/features/lex.prf \
 		pixelstruct.pro \
+		/usr/local/Cellar/qt5/5.7.0/lib/QtOpenGL.framework/QtOpenGL.prl \
 		/usr/local/Cellar/qt5/5.7.0/lib/QtWidgets.framework/QtWidgets.prl \
 		/usr/local/Cellar/qt5/5.7.0/lib/QtGui.framework/QtGui.prl \
 		/usr/local/Cellar/qt5/5.7.0/lib/QtCore.framework/QtCore.prl
@@ -329,6 +330,7 @@ pixelstruct.xcodeproj/project.pbxproj: pixelstruct.pro /usr/local/Cellar/qt5/5.7
 /usr/local/Cellar/qt5/5.7.0/mkspecs/features/yacc.prf:
 /usr/local/Cellar/qt5/5.7.0/mkspecs/features/lex.prf:
 pixelstruct.pro:
+/usr/local/Cellar/qt5/5.7.0/lib/QtOpenGL.framework/QtOpenGL.prl:
 /usr/local/Cellar/qt5/5.7.0/lib/QtWidgets.framework/QtWidgets.prl:
 /usr/local/Cellar/qt5/5.7.0/lib/QtGui.framework/QtGui.prl:
 /usr/local/Cellar/qt5/5.7.0/lib/QtCore.framework/QtCore.prl:

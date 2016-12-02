@@ -25,21 +25,20 @@ brew install qt5
 1.) Clone this repo    
 cd pixelStruct
 
-2.) clone GCAL inside directory
-https://github.com/johndpope/cgal/blob/master/INSTALL.md   
-git clone https://github.com/CGAL/cgal.git /path/to/cgal.git
-cd /path/to/cgal.git
-mkdir -p build/debug
-cd build/debug
-cmake -DCMAKE_BUILD_TYPE=Debug ../..
-make
-make install
-
-
-3)   
+2.) clone GCAL inside directory https://github.com/johndpope/cgal/blob/master/INSTALL.md   
+git clone https://github.com/CGAL/cgal.git  
+cd cgal   
+mkdir -p build/debug   
+cd build/debug   
+cmake -DCMAKE_OSX_ARCHITECTURES=x86_64 -DCMAKE_BUILD_TYPE=Debug ../..   
+make   
+make install   
+   
+   
+3)    
 cd ../..   
-cmake -DCGAL_DIR=/cgal .   
-make  // here it's failing with Undefined symbols for architecture x86_64: on CGAL
+cmake -DCMAKE_OSX_ARCHITECTURES=x86_64 -DCGAL_DIR=/cgal .   
+make  // here it's failing with Undefined symbols for architecture x86_64: on CGAL   
 
 OPTIONAL / SPIT OUT XCODE PROJECT
 qmake -spec macx-xcode pixelstruct.pro   

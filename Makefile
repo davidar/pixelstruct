@@ -23,9 +23,6 @@ SUFFIXES =
 .SUFFIXES: .hpux_make_needs_suffix_list
 
 
-# Produce verbose output by default.
-VERBOSE = 1
-
 # Suppress display of executed commands.
 $(VERBOSE).SILENT:
 
@@ -113,32 +110,6 @@ depend:
 	$(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named pixelstruct
-
-# Build rule for target.
-pixelstruct: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pixelstruct
-.PHONY : pixelstruct
-
-# fast build rule for target.
-pixelstruct/fast:
-	$(MAKE) -f src/CMakeFiles/pixelstruct.dir/build.make src/CMakeFiles/pixelstruct.dir/build
-.PHONY : pixelstruct/fast
-
-#=============================================================================
-# Target rules for targets named pixelstruct_automoc
-
-# Build rule for target.
-pixelstruct_automoc: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 pixelstruct_automoc
-.PHONY : pixelstruct_automoc
-
-# fast build rule for target.
-pixelstruct_automoc/fast:
-	$(MAKE) -f src/CMakeFiles/pixelstruct_automoc.dir/build.make src/CMakeFiles/pixelstruct_automoc.dir/build
-.PHONY : pixelstruct_automoc/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -147,8 +118,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... pixelstruct"
-	@echo "... pixelstruct_automoc"
 .PHONY : help
 
 

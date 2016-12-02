@@ -34,6 +34,7 @@
 #include <QDebug>
 #include <QKeyEvent>
 #include <QImage>
+#include <QtOpenGL/QtOpenGL>
 
 using std::cerr;
 using std::endl;

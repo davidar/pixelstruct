@@ -1,4 +1,4 @@
-QT += core gui
+QT += widgets core gui opengl
 
 QMAKE_LFLAGS += -F /System/Library/Frameworks -F /System/Library/Frameworks/IOKit.framework -F /System/Library/Frameworks/CoreFoundation.framework
 LIBS += -framework IOKit -framework CoreFoundation
@@ -9,6 +9,11 @@ TARGET = pixelstruct
 TEMPLATE = app
 
 INCLUDEPATH += /usr/local/include
+
+@
+CONFIG -= x86 ppc
+CONFIG += x86_64
+@
 
 
 SOURCES += ./src/main.cpp \
@@ -36,3 +41,53 @@ HEADERS  += ./src/glwidget.h \
     ./src/triangulation.h \
     ./src/photo.h
 
+
+#-------------------------------------------------
+# CGAL LIBRARY
+#-------------------------------------------------
+macx: LIBS += -L$$PWD/../../../../../../opt/local/lib/ -lCGAL
+
+INCLUDEPATH += $$PWD/../../../../../../opt/local/include
+DEPENDPATH += $$PWD/../../../../../../opt/local/include
+#-------------------------------------------------
+# CGAL CORE LIBRARY
+#-------------------------------------------------
+#macx: LIBS += -L$$PWD/../../../../../../opt/local/lib/ -lCGAL_Core.11
+
+INCLUDEPATH += $$PWD/../../../../../../opt/local/include
+DEPENDPATH += $$PWD/../../../../../../opt/local/include
+#-------------------------------------------------
+# CGAL IMAGE IO LIBRARY
+#-------------------------------------------------
+macx: LIBS += -L$$PWD/../../../../../../opt/local/lib/ -lCGAL_ImageIO
+
+INCLUDEPATH += $$PWD/../../../../../../opt/local/include
+DEPENDPATH += $$PWD/../../../../../../opt/local/include
+#-------------------------------------------------
+# BOOST THREAD LIBRARY
+#-------------------------------------------------
+macx: LIBS += -L$$PWD/../../../../../../opt/local/lib/ -lboost_thread-mt
+
+INCLUDEPATH += $$PWD/../../../../../../opt/local/include
+DEPENDPATH += $$PWD/../../../../../../opt/local/include
+#-------------------------------------------------
+# BOOST SYSTEM LIBRARY
+#-------------------------------------------------
+macx: LIBS += -L$$PWD/../../../../../../opt/local/lib/ -lboost_system-mt
+
+INCLUDEPATH += $$PWD/../../../../../../opt/local/include
+DEPENDPATH += $$PWD/../../../../../../opt/local/include
+#-------------------------------------------------
+# GMP LIBRARY
+#-------------------------------------------------
+macx: LIBS += -L$$PWD/../../../../../../opt/local/lib/ -lgmp
+
+INCLUDEPATH += $$PWD/../../../../../../opt/local/include
+DEPENDPATH += $$PWD/../../../../../../opt/local/include
+#-------------------------------------------------
+# MPFR LIBRARY
+#-------------------------------------------------
+macx: LIBS += -L$$PWD/../../../../../../opt/local/lib/ -lmpfr
+
+INCLUDEPATH += $$PWD/../../../../../../opt/local/include
+DEPENDPATH += $$PWD/../../../../../../opt/local/include

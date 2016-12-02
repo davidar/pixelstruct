@@ -428,6 +428,98 @@
 			settings = {
 			};
 		};
+		45975E62F7A85151AAA83765 = {
+			isa = PBXFileReference;
+			name = "CGAL";
+			path = "/../opt/local/lib/libCGAL.dylib";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		D18A0D21645BC1D0B3C634E0 = {
+			fileRef = "45975E62F7A85151AAA83765";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		3B70DBC3969A0816AA4DB7AF = {
+			isa = PBXFileReference;
+			name = "CGAL_ImageIO";
+			path = "/../opt/local/lib/libCGAL_ImageIO.dylib";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		972A27B85668D435B009DE9C = {
+			fileRef = "3B70DBC3969A0816AA4DB7AF";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		7FF369EF2035C4420AAA8D94 = {
+			isa = PBXFileReference;
+			name = "boost_thread-mt";
+			path = "/../opt/local/lib/libboost_thread-mt.dylib";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		E7D5B92101161EF32FD71B8B = {
+			fileRef = "7FF369EF2035C4420AAA8D94";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		0E1A1EDE11868FB6FBF32756 = {
+			isa = PBXFileReference;
+			name = "boost_system-mt";
+			path = "/../opt/local/lib/libboost_system-mt.dylib";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		C22D5223C96FAF0670BD9170 = {
+			fileRef = "0E1A1EDE11868FB6FBF32756";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		7ADFF16071B5EE7FB36B2B88 = {
+			isa = PBXFileReference;
+			name = "gmp";
+			path = "/../opt/local/lib/libgmp.dylib";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		8620C140897F133DF5AE73A1 = {
+			fileRef = "7ADFF16071B5EE7FB36B2B88";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		8ACDE5939F154A6D8FDC15B0 = {
+			isa = PBXFileReference;
+			name = "mpfr";
+			path = "/../opt/local/lib/libmpfr.dylib";
+			refType = 0;
+			sourceTree = "<absolute>";
+		};
+		B6ED4E052F2FA6E216501C37 = {
+			fileRef = "8ACDE5939F154A6D8FDC15B0";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		D9B0FF2AB0FE2F49EBF9AE99 = {
+			isa = PBXFileReference;
+			name = "QtOpenGL.framework";
+			path = "/usr/local/Cellar/qt5/5.7.0/lib/QtOpenGL.framework";
+			refType = 0;
+			sourceTree = "<absolute>";
+			lastKnownFileType = "wrapper.framework";
+		};
+		3F36ECC4AC8A91054018DBF9 = {
+			fileRef = "D9B0FF2AB0FE2F49EBF9AE99";
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		17DDAFE5E52515581D095F18 = {
 			isa = PBXFileReference;
 			name = "QtWidgets.framework";
@@ -516,6 +608,13 @@
 			children = (
 				"A1A67BEAA744704B29168D39",
 				"4D765E1B1EA6C757220C63E7",
+				"45975E62F7A85151AAA83765",
+				"3B70DBC3969A0816AA4DB7AF",
+				"7FF369EF2035C4420AAA8D94",
+				"0E1A1EDE11868FB6FBF32756",
+				"7ADFF16071B5EE7FB36B2B88",
+				"8ACDE5939F154A6D8FDC15B0",
+				"D9B0FF2AB0FE2F49EBF9AE99",
 				"17DDAFE5E52515581D095F18",
 				"CD829298CA2038092A51A0F6",
 				"820A25BF0A1A2242F14E2A0A",
@@ -531,6 +630,13 @@
 			files = (
 				"8D267F2E4776F0ECA2F49DC8",
 				"F8B465CE34D8DF87AAE95913",
+				"D18A0D21645BC1D0B3C634E0",
+				"972A27B85668D435B009DE9C",
+				"E7D5B92101161EF32FD71B8B",
+				"C22D5223C96FAF0670BD9170",
+				"8620C140897F133DF5AE73A1",
+				"B6ED4E052F2FA6E216501C37",
+				"3F36ECC4AC8A91054018DBF9",
 				"B1FD449BA9A24D8FBFD6B918",
 				"7B61C92B0D756FD9703B0C41",
 				"E8CEE9A2D81662520C72B099",
@@ -628,6 +734,14 @@
 				HEADER_SEARCH_PATHS = (
 					".",
 					"/usr/local/include",
+					"/../opt/local/include",
+					"/../opt/local/include",
+					"/../opt/local/include",
+					"/../opt/local/include",
+					"/../opt/local/include",
+					"/../opt/local/include",
+					"/../opt/local/include",
+					"/usr/local/Cellar/qt5/5.7.0/lib/QtOpenGL.framework/Headers",
 					"/usr/local/Cellar/qt5/5.7.0/lib/QtWidgets.framework/Headers",
 					"/usr/local/Cellar/qt5/5.7.0/lib/QtGui.framework/Headers",
 					"/usr/local/Cellar/qt5/5.7.0/lib/QtCore.framework/Headers",
@@ -637,6 +751,8 @@
 					"/usr/local/Cellar/qt5/5.7.0/mkspecs/macx-clang");
 				LIBRARY_SEARCH_PATHS = (
 					"/System/Library/Frameworks/",
+					"/Users/johndpope/Documents/gitWorkspace/pixelstruct/../../../../../../opt/local/lib/",
+					"/../opt/local/lib/",
 					"/usr/local/Cellar/qt5/5.7.0/lib");
 				FRAMEWORK_SEARCH_PATHS = (
 					"/usr/local/Cellar/qt5/5.7.0/lib",
@@ -648,6 +764,7 @@
 					"-W",
 					"-fPIC",
 					"-DQT_NO_DEBUG",
+					"-DQT_OPENGL_LIB",
 					"-DQT_WIDGETS_LIB",
 					"-DQT_GUI_LIB",
 					"-DQT_CORE_LIB");
@@ -660,6 +777,7 @@
 					"-W",
 					"-fPIC",
 					"-DQT_NO_DEBUG",
+					"-DQT_OPENGL_LIB",
 					"-DQT_WIDGETS_LIB",
 					"-DQT_GUI_LIB",
 					"-DQT_CORE_LIB");
@@ -672,7 +790,8 @@
 						"/System/Library/Frameworks/IOKit.framework",
 						"-F",
 						"/System/Library/Frameworks/CoreFoundation.framework",
-						"-F/usr/local/Cellar/qt5/5.7.0/lib");
+						"-F/usr/local/Cellar/qt5/5.7.0/lib",
+						"-L/Users/johndpope/Documents/gitWorkspace/pixelstruct/../../../../../../opt/local/lib/");
 				ARCHS = "x86_64";
 			};
 			name = "Debug";
@@ -711,6 +830,14 @@
 				HEADER_SEARCH_PATHS = (
 					".",
 					"/usr/local/include",
+					"/../opt/local/include",
+					"/../opt/local/include",
+					"/../opt/local/include",
+					"/../opt/local/include",
+					"/../opt/local/include",
+					"/../opt/local/include",
+					"/../opt/local/include",
+					"/usr/local/Cellar/qt5/5.7.0/lib/QtOpenGL.framework/Headers",
 					"/usr/local/Cellar/qt5/5.7.0/lib/QtWidgets.framework/Headers",
 					"/usr/local/Cellar/qt5/5.7.0/lib/QtGui.framework/Headers",
 					"/usr/local/Cellar/qt5/5.7.0/lib/QtCore.framework/Headers",
@@ -720,6 +847,8 @@
 					"/usr/local/Cellar/qt5/5.7.0/mkspecs/macx-clang");
 				LIBRARY_SEARCH_PATHS = (
 					"/System/Library/Frameworks/",
+					"/Users/johndpope/Documents/gitWorkspace/pixelstruct/../../../../../../opt/local/lib/",
+					"/../opt/local/lib/",
 					"/usr/local/Cellar/qt5/5.7.0/lib");
 				FRAMEWORK_SEARCH_PATHS = (
 					"/usr/local/Cellar/qt5/5.7.0/lib",
@@ -731,6 +860,7 @@
 					"-W",
 					"-fPIC",
 					"-DQT_NO_DEBUG",
+					"-DQT_OPENGL_LIB",
 					"-DQT_WIDGETS_LIB",
 					"-DQT_GUI_LIB",
 					"-DQT_CORE_LIB");
@@ -743,6 +873,7 @@
 					"-W",
 					"-fPIC",
 					"-DQT_NO_DEBUG",
+					"-DQT_OPENGL_LIB",
 					"-DQT_WIDGETS_LIB",
 					"-DQT_GUI_LIB",
 					"-DQT_CORE_LIB");
@@ -755,7 +886,8 @@
 						"/System/Library/Frameworks/IOKit.framework",
 						"-F",
 						"/System/Library/Frameworks/CoreFoundation.framework",
-						"-F/usr/local/Cellar/qt5/5.7.0/lib");
+						"-F/usr/local/Cellar/qt5/5.7.0/lib",
+						"-L/Users/johndpope/Documents/gitWorkspace/pixelstruct/../../../../../../opt/local/lib/");
 				ARCHS = "x86_64";
 			};
 			name = "Release";
