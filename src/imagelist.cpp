@@ -45,7 +45,7 @@ void ImageList::parse(const char* file, const char* directory) {
     ifstream fin(file);
     if(!fin) {
         cerr << "[ImageList::parse] Unable to open file " << file << endl;
-        exit(1);
+//   exit(1);
     } else {
         cerr << "[ImageList::parse] Successfully opened file " << file << endl;
     }
