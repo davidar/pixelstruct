@@ -31,10 +31,12 @@ MainWindow::MainWindow()
     createActions();
     createMenus();
     
-    m_transmode_2->setChecked(true);
     
     if(qApp->arguments().size() > 1)
         openImageDirectory(qApp->arguments().at(1));
+    
+    m_transmode_1->setChecked(true);
+        
 }
 
 MainWindow::~MainWindow() {
