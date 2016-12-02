@@ -4,11 +4,59 @@ from photographs. It uses the opensource structure-from-motion system
 Bundler[2], which is based on the same research as Microsoft Live Labs
 Photosynth[3].
 
+
+![Alt text](/images/youtube.png "PixelStruct - photosynth viewer alternative")
+https://www.youtube.com/watch?v=VFdNQc3gVkM
+
+
+
 HOW TO COMPILE
 PixelStruct requires the following libraries:
- - Qt4 (with OpenGL support)
+ - Qt5 (with OpenGL support)
  - CGAL
 
+
+OSX   
+-------------------------------   
+brew install boost --with-python   
+brew install qt5   
+// brew install cgal   // N.B. doesn't seem to link cgal_qt5 !?? nor does macports - use git + cmake below 
+   
+1.) Clone this repo    
+cd pixelStruct
+
+2.) clone GCAL inside directory https://github.com/johndpope/cgal/blob/master/INSTALL.md   
+git clone https://github.com/CGAL/cgal.git  
+cd cgal   
+mkdir -p build/debug   
+cd build/debug   
+cmake -DCMAKE_OSX_ARCHITECTURES=x86_64 -DCMAKE_BUILD_TYPE=Debug ../..   
+make   
+make install   
+   
+   
+3)    
+cd ../..   
+cmake -DCMAKE_OSX_ARCHITECTURES=x86_64 -DCGAL_DIR=/cgal .   
+make  // here it's failing with Undefined symbols for architecture x86_64: on CGAL   
+
+OPTIONAL / SPIT OUT XCODE PROJECT
+qmake -spec macx-xcode pixelstruct.pro   
+open xcode project
+
+
+Troubleshooting  
+----------------------------------  
+export CXXFLAGS=-std=c++11  maybe not needed anymore?   
+export CPLUS_INCLUDE_PATH=/usr/include/python2.7   
+
+https://github.com/Homebrew/legacy-homebrew/issues/29938   
+replace 5.7.0 -> current version of qt!!!   
+sudo ln -s /usr/local/Cellar/qt5/5.7.0/mkspecs /usr/local/mkspecs && ln -s /usr/local/Cellar/qt5/5.7.0/plugins /usr/local/plugins   
+
+ 
+   
+   
 You will also need to install CMake in order to build PixelStruct.
 
 All of the above can be installed in Ubuntu (and likely other Debian-based

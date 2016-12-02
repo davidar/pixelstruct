@@ -22,10 +22,19 @@
 #include <unistd.h>
 #include <cfloat>
 #include <cmath>
+#if defined(__APPLE__)
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
+#else
+#include <GL/gl.h>
+#include <GL/glu.h>
+#endif
+
 
 #include <QDebug>
 #include <QKeyEvent>
 #include <QImage>
+#include <QtOpenGL/QtOpenGL>
 
 using std::cerr;
 using std::endl;
